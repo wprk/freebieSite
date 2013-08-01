@@ -53,12 +53,10 @@ class Admin_model extends CI_Model
     public function update_listing_tags($listing_id, $listing_tag_data)
     {
         $this->db->delete('listing_tags', array('listing_id' => $listing_id));
-        foreach($listing_tag_data as $tag_data) {
-            if($this->db->insert("listing_tags", $tag_data)) {
-                return true;
-            } else {
-                return false;
-            }
+        if($this->db->insert_batch("listing_tags", $listing_tag_data)) {
+            return true;
+        } else {
+            return false;
         }
     }
 
