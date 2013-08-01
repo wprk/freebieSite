@@ -31,7 +31,11 @@
                 <?php foreach($listings as $listing) { ?>
                     <tr class="listings <?php echo $listing['category_slug'];?>">
                         <td><input type="checkbox"></td>
-                        <td><?php echo $listing['listing_title'];?></td>
+                        <td>
+                            <a href="/admin/edit/listings/<?php echo $listing['listing_id'];?>">
+                                <?php echo $listing['listing_title'];?>
+                            </a>
+                        </td>
                         <td><?php echo $listing['category_name'];?></td>
                         <td><?php echo ($listing['listing_featured'] ? 'Y' : 'N');?></td>
                         <td><?php echo ($listing['listing_affiliate'] ? 'Y' : 'N');?></td>
