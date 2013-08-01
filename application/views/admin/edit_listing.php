@@ -36,16 +36,14 @@
         </fieldset>
         <fieldset style="width:48%; float:left; margin-right: 3%;">
             <label>Category</label>
-            <select id="listing_category_id" name="listing_category_id" style="width:92%;">
-                <option value="">Select a Category</option>
-                <?php foreach($categories as $category) { ?>
+            <select id="listing_category_id" name="listing_category_id" class="chosen-select" style="width:92%;" data-placeholder="Add Category to Listing...">
+                <?php foreach ($categories as $category) { ?>
                     <option<?php echo ($listing_record->category_id == $category['category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
                 <?php } ?>
             </select>
             <div style="height: 20px;"></div>
             <label>Sub Category</label>
-            <select id="listing_sub_category_id" name="listing_sub_category_id" style="width:92%;">
-                <option value="0">Select a Sub Category</option>
+            <select id="listing_sub_category_id" name="listing_sub_category_id" class="chosen-select" style="width:92%;" data-placeholder="Add Sub Category to Listing...">
                 <?php foreach($sub_categories as $sub_category) { ?>
                     <option<?php echo ($listing_record->sub_category_id == $sub_category['sub_category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $sub_category['sub_category_id']; ?>"><?php echo $sub_category['sub_category_name']; ?></option>
                 <?php } ?>
@@ -53,7 +51,11 @@
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Tags</label>
-            <input id="listing_tags" name="listing_tags" type="text" value="<?php echo $listing_record->listing_tags; ?>" style="width:92%;">
+            <select name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
+                <?php foreach ($tags as $tag) { ?>
+                    <option<?php echo (in_array($tag['tag_id'], $listing_record->tag_ids) ? ' selected="selected"' : '') ?>  value="<?php echo $tag['tag_id']; ?>"><?php echo $tag['tag_name']; ?></option>
+                <?php } ?>
+            </select>
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Expiry</label>

@@ -43,8 +43,7 @@
             </select>
             <div style="height: 20px;"></div>
             <label>Sub Category</label>
-            <select id="listing_sub_category_id" name="listing_sub_category_id" style="width:92%;">
-                <option value="0">Select a Sub Category</option>
+            <select id="listing_sub_category_id" name="listing_sub_category_id" class="chosen-select" style="width:92%;" data-placeholder="Add Sub Category to Listing...">
                 <?php foreach($sub_categories as $sub_category) { ?>
                     <option<?php echo ($listing_record->sub_category_id == $sub_category['sub_category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $sub_category['sub_category_id']; ?>"><?php echo $sub_category['sub_category_name']; ?></option>
                 <?php } ?>
@@ -52,12 +51,11 @@
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Tags</label>
-            <select name="listing_tags" class="chosen-select" multiple="" data-placeholder="Add Tags to Listing...">
+            <select name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
                 <?php foreach ($tags as $tag) { ?>
-                    <option value="<?php echo $tag['tag_id']; ?>"><?php echo $category['tag_name']; ?></option>
+                    <option value="<?php echo $tag['tag_id']; ?>"><?php echo $tag['tag_name']; ?></option>
                 <?php } ?>
             </select>
-            <input id="listing_tags" name="listing_tags" type="text" style="width:92%;">
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Expiry</label>
