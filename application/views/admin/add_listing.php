@@ -36,9 +36,8 @@
         </fieldset>
         <fieldset style="width:48%; float:left; margin-right: 3%;">
             <label>Category</label>
-            <select id="listing_category_id" name="listing_category_id" style="width:92%;">
-                <option value="0">Select a Category</option>
-                <?php foreach($categories as $category) { ?>
+            <select id="listing_category_id" name="listing_category_id" class="chosen-select" style="width:92%;" data-placeholder="Add Category to Listing...">
+                <?php foreach ($categories as $category) { ?>
                     <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
                 <?php } ?>
             </select>
@@ -53,6 +52,11 @@
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Tags</label>
+            <select name="listing_tags" class="chosen-select" multiple="" data-placeholder="Add Tags to Listing...">
+                <?php foreach ($tags as $tag) { ?>
+                    <option value="<?php echo $tag['tag_id']; ?>"><?php echo $category['tag_name']; ?></option>
+                <?php } ?>
+            </select>
             <input id="listing_tags" name="listing_tags" type="text" style="width:92%;">
         </fieldset>
         <fieldset style="width:48%; float:left;">
