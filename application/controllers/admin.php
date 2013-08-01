@@ -338,7 +338,9 @@ class Admin extends CI_Controller {
                     );
                     $listing_id = $this->admin_model->edit_listing($this->edit_id, $listing_data);
                     if($listing_id > 0) {
-                        foreach($this->input->post('listing_tags') as $tag) {
+                        $tags = $this->input->post('listing_tags');
+                        die(print_r($tags));
+                        foreach($tags as $tag) {
                             $listing_tag_data[] = array (
                                 'tag_id' => $tag,
                                 'listing_id' => $listing_id
