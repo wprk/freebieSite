@@ -1,0 +1,29 @@
+[13-Apr-2013 11:48:46] PHP Parse error:  syntax error, unexpected $end in /home/freewins/public_html/application/config/database.php on line 58
+[13-Apr-2013 14:38:26] PHP Fatal error:  Call to undefined method Admin::check_listing() in /home/freewins/public_html/application/controllers/admin.php on line 351
+[13-Apr-2013 14:42:22] PHP Fatal error:  Call to undefined method Admin::check_listing() in /home/freewins/public_html/application/controllers/admin.php on line 351
+[13-Apr-2013 14:42:25] PHP Fatal error:  Call to undefined method Admin::check_listing() in /home/freewins/public_html/application/controllers/admin.php on line 351
+[15-Apr-2013 10:07:03] PHP Fatal error:  Call to undefined method CI_DB_mysql_result::result_row() in /home/freewins/public_html/application/models/admin_model.php on line 25
+[26-Jul-2013 13:20:26] PHP Fatal error:  Call to undefined function  md_rand() in /home/freewins/public_html/application/controllers/admin.php on line 216
+[26-Jul-2013 13:43:57] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::row() in /home/freewins/public_html/application/models/site_model.php on line 133
+[26-Jul-2013 13:44:38] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::row_array() in /home/freewins/public_html/application/models/site_model.php on line 133
+[26-Jul-2013 13:46:26] PHP Fatal error:  Cannot use object of type CI_DB_mysql_result as array in /home/freewins/public_html/application/models/site_model.php on line 134
+[26-Jul-2013 13:46:55] PHP Fatal error:  Cannot use object of type CI_DB_mysql_result as array in /home/freewins/public_html/application/models/site_model.php on line 134
+[26-Jul-2013 13:52:20] PHP Fatal error:  Call to a member function num_rows() on a non-object in /home/freewins/public_html/application/models/site_model.php on line 133
+[26-Jul-2013 19:32:36] PHP Fatal error:  Call to undefined method Admin_model::get_category() in /home/freewins/public_html/application/controllers/admin.php on line 524
+[26-Jul-2013 19:58:38] PHP Fatal error:  Call to undefined method CI_DB_mysql_driver::order() in /home/freewins/public_html/application/models/admin_model.php on line 125
+[26-Jul-2013 19:58:57] PHP Fatal error:  Call to undefined method CI_DB_mysql_result::order() in /home/freewins/public_html/application/models/admin_model.php on line 125
+[26-Jul-2013 19:59:51] PHP Fatal error:  Call to undefined method CI_DB_mysql_result::order_by() in /home/freewins/public_html/application/models/admin_model.php on line 125
+[26-Jul-2013 20:36:23] PHP Fatal error:  Call to undefined method CI_DB_mysql_result::order_by() in /home/freewins/public_html/application/models/site_model.php on line 41
+[26-Jul-2013 20:36:54] PHP Parse error:  syntax error, unexpected T_IF, expecting T_STRING or T_VARIABLE or '{' or '$' in /home/freewins/public_html/application/models/site_model.php on line 55
+[26-Jul-2013 20:59:30] PHP Fatal error:  Cannot use object of type stdClass as array in /home/freewins/public_html/application/controllers/admin.php on line 39
+[26-Jul-2013 21:00:30] PHP Parse error:  syntax error, unexpected ';' in /home/freewins/public_html/application/controllers/admin.php on line 39
+[28-Jul-2013 17:37:34] PHP Fatal error:  Call to undefined method Site_model::get_tag_listings() in /home/freewins/public_html/application/controllers/home.php on line 63
+[28-Jul-2013 17:54:48] PHP Parse error:  syntax error, unexpected ';' in /home/freewins/public_html/application/models/site_model.php on line 216
+[28-Jul-2013 17:56:18] PHP Parse error:  syntax error, unexpected T_ISSET, expecting '(' in /home/freewins/public_html/application/views/sub_views/header.php on line 1
+[28-Jul-2013 18:06:04] PHP Parse error:  syntax error, unexpected T_FOREACH in /home/freewins/public_html/application/views/sub_views/listings.php on line 39
+[28-Jul-2013 18:13:05] PHP Parse error:  syntax error, unexpected $end in /home/freewins/public_html/application/models/site_model.php on line 207
+[28-Jul-2013 18:30:03] PHP Fatal error:  Call to undefined method stdClass::tag_id() in /home/freewins/public_html/application/models/admin_model.php on line 251
+[28-Jul-2013 18:33:23] PHP Parse error:  syntax error, unexpected '?' in /home/freewins/public_html/application/views/sub_views/listings.php on line 45
+[28-Jul-2013 18:33:35] PHP Parse error:  syntax error, unexpected '?' in /home/freewins/public_html/application/views/sub_views/listings.php on line 45
+[28-Jul-2013 18:33:38] PHP Parse error:  syntax error, unexpected '?' in /home/freewins/public_html/application/views/sub_views/listings.php on line 45
+[28-Jul-2013 18:33:47] PHP Parse error:  syntax error, unexpected $end in /home/freewins/public_html/application/views/sub_views/listings.php on line 58

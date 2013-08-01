@@ -1,0 +1,158 @@
+.wrap {
+    width: 1000px;
+    padding: 0;
+    margin: 0 auto;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+#header {
+    height: 48px;
+    width: 100%;
+    background: #B13E3E url(../images/logobk.png) bottom repeat-x;
+}
+
+#header .right {
+    padding: 0 20px 0 0;
+}
+
+#header img {
+    height: 48px;
+    width: auto;
+    border: 0;
+}
+
+#header_divider {
+    height: 3px;
+    width: 100%;
+    background: #B94747;
+}
+
+#sub_categories {
+    height: 40px;
+    width: 100%;
+    background: url(../images/greybkgtop.gif) bottom repeat-x;
+}
+
+#sub_categories div.right {
+    padding: 10px 18px 10px 0;
+}
+
+#sub_categories div.right a {
+    display: inline-block;
+    padding: 0 2px 0 3px;
+}
+
+#content {
+    padding: 20px 0 0 0;
+    clear: both;
+}
+
+#content .left {
+    width: 272px;
+    padding: 0 0 0 0px;
+}
+
+#content .left h1 {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+#content .left a {
+    display: block;
+    padding: 0;
+}
+
+#content .left a:hover {
+    text-decoration: underline;
+}
+
+#content .right {
+    width: 728px;
+}
+
+#content .right .listing {
+    width: 728px;
+    height: 115px;
+    margin: 0 0 50px 0;
+}
+
+#content .right .listing .list_img {
+    float: left;
+    height: 115px;
+    width: 115px;
+    margin-right: 15px;
+}
+
+#content .right .listing .list_title {
+    float: right;
+    width: 598px;
+}
+
+#content .right .listing .list_desc {
+    float: right;
+    width: 598px;
+}
+
+#content .right .listing .list_expires {
+    float: right;
+    width: 598px;
+}
+
+#content .right .listing .list_tags {
+    float: right;
+    width: 598px;
+    background: url(../images/divider.gif) 0px 0px repeat-x;
+    padding: 3px 0 0 0;
+}
+
+#content .right .listing .list_tags a {
+    color: #000;
+    text-decoration: none;
+}
+
+#content .right .listing .list_tags a:hover {
+    text-decoration: underline;
+}
+
+#content .right .googlead {
+    margin: 0 0 50px 0;
+}
+
+#content .right .backtotop {
+
+}
+
+#footer_divider {
+    margin: 20px 0 0 0;
+    height: 51px;
+    width: 100%;
+    background: url(../images/greybkgbot.gif) top repeat-x;
+}
+
+#footer {
+    background: #F2F2F2;
+}
+
+#footer #copyright {
+    height: 26px;
+    text-align: right;
+    padding: 4px 0 0 0;
+}
+
+#footer #legal {
+    height: 26px;
+    text-align: right;
+    padding: 1px 0 23px 0;
+}

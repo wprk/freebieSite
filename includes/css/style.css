@@ -1,0 +1,32 @@
+#at16lb {
+    background:none !important;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+}
+.topbar_sections {
+    background-image: url(../images/greybkgtop.gif);
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+.botbar {
+    background-image: url(../images/greybkgbot.gif);
+    background-repeat: repeat-x;
+    background-position: bottom;
+}
+.topbar {
+    background-image: url(../images/logobk.png);
+    background-repeat: repeat-x;
+    background-color: #B13E3E;
+    background-position: bottom;
+}
+.listing_divider {
+    background-repeat: repeat-x;
+    background-color: #E5E5E5;
+}
+.topbar_divider {
+    background-color: #B94747;
+}
