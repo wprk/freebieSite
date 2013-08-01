@@ -345,7 +345,6 @@ class Admin extends CI_Controller {
                                 'listing_id' => $listing_id
                             );
                         }
-                        die(print_r($listing_tag_data));
                         $this->admin_model->update_listing_tags($listing_id, $listing_tag_data);
 
                         $listing_category_data = array(
