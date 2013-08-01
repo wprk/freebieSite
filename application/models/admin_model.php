@@ -145,9 +145,9 @@ class Admin_model extends CI_Model
     }
 
     public function get_tag($id) {
-        $categories = $this->db->query("SELECT * FROM tags WHERE tags.tag_id = ".$id." ORDER BY tags.tag_name ASC");
-        if($categories->num_rows() == 1) {
-            return $categories->row();
+        $tag = $this->db->query("SELECT * FROM tags WHERE tags.tag_id = ".$id." ORDER BY tags.tag_name ASC");
+        if($tag->num_rows() == 1) {
+            return $tag->row();
         } else {
             return array();
         }
@@ -156,11 +156,25 @@ class Admin_model extends CI_Model
     public function get_tags()
     {
         $this->db->order_by('tag_name ASC');
-        $results = $this->db->get('tags');
-        if($results->num_rows() > 0) {
-            return $results->result_array();
+        $tags = $this->db->get('tags');
+        if($tags->num_rows() > 0) {
+            return $tags->result_array();
         } else {
             return array();
+        }
+    }
+
+    public function get_tags_by_listing($id) {
+        $tag_list = array();
+        $tags = $this->db->query("SELECT listing_tags.listing_id, tags.tag_id FROM listing_tags, tags WHERE listing_tags.tag_id = tags.tag_id AND listing_tags.listing_id = ".$id." ORDER BY tags.tag_name ASC");
+        if ($tags->num_rows() > 0) {
+            $tag_records = $tags->result_array();
+            foreach ($tag_records as $tag) {
+                $tag_list[] = $tag['tag_id'];
+            }
+            return $tag_list;
+        } else {
+            return $tag_list;
         }
     }
 
