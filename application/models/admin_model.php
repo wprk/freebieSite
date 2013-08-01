@@ -50,6 +50,27 @@ class Admin_model extends CI_Model
         }
     }
 
+    public function update_listing_tags($listing_id, $listing_tag_data)
+    {
+        $this->db->delete('listing_tags', array('listing_id' => $listing_id));
+        foreach($listing_tag_data as $tag_data) {
+            if($this->db->insert("listing_tags", $tag_data)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+
+    public function create_listing_tag($listing_tag_data)
+    {
+        if($this->db->insert("listing_tags", $listing_tag_data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function get_listing($id) {
         $listings = $this->db->query("SELECT * FROM listings, listing_categories, categories WHERE listing_categories.listing_id = listings.listing_id AND listing_categories.category_id = categories.category_id AND listings.listing_id = ".$id." ORDER BY listings.listing_created DESC");
         if($listings->num_rows() == 1) {

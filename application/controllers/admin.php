@@ -211,7 +211,6 @@ class Admin extends CI_Controller {
                 $this->form_validation->set_rules('listing_alt_desc', 'Alternative Listing Description', 'required');
                 $this->form_validation->set_rules('listing_category_id', 'Listing Category', 'required');
                 $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category', 'required');
-                $this->form_validation->set_rules('listing_tags', 'Listing Tags', 'required');
                 $this->form_validation->set_rules('listing_expires', 'Listing Status', '');
                 $this->form_validation->set_rules('listing_status', 'Listing Status', 'required');
                 if ($this->form_validation->run()) {
@@ -223,7 +222,6 @@ class Admin extends CI_Controller {
                         'listing_featured' => set_value('listing_featured'),
                         'listing_desc' => set_value('listing_desc'),
                         'listing_alt_desc' => set_value('listing_alt_desc'),
-                        'listing_tags' => set_value('listing_tags'),
                         'listing_expires' => (set_value('listing_expires') ? set_value('listing_expires') : NULL),
                         'listing_status' => set_value('listing_status')
                     );
@@ -237,6 +235,14 @@ class Admin extends CI_Controller {
                                 'listing_desc_value' => mt_rand(1,2)
                             );
                             $this->admin_model->create_listing_alt_desc($listing_alt_desc_data);
+                        }
+
+                        foreach($this->input->post('listing_tags') as $tag) {
+                            $listing_tag_data = array (
+                                'tag_id' => $tag,
+                                'listing_id' => $listing_id
+                            );
+                            $this->admin_model->create_listing_tag($listing_tag_data);
                         }
 
                         $listing_category_data = array(
@@ -315,7 +321,6 @@ class Admin extends CI_Controller {
                 $this->form_validation->set_rules('listing_alt_desc','Alternative Listing Description', 'required');
                 $this->form_validation->set_rules('listing_category_id', 'Listing Category', 'required');
                 $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category', 'required');
-                $this->form_validation->set_rules('listing_tags', 'Listing Tags', 'required');
                 $this->form_validation->set_rules('listing_expires', 'Listing Status', '');
                 $this->form_validation->set_rules('listing_status', 'Listing Status', 'required');
                 if ($this->form_validation->run()) {
@@ -327,13 +332,20 @@ class Admin extends CI_Controller {
                         'listing_featured' => set_value('listing_featured'),
                         'listing_desc' => set_value('listing_desc'),
                         'listing_alt_desc' => set_value('listing_alt_desc'),
-                        'listing_tags' => set_value('listing_tags'),
                         'listing_expires' => (set_value('listing_expires') ? set_value('listing_expires') : NULL),
                         'listing_created' => NULL,
                         'listing_status' => set_value('listing_status')
                     );
                     $listing_id = $this->admin_model->edit_listing($this->edit_id, $listing_data);
                     if($listing_id > 0) {
+                        foreach($this->input->post('listing_tags') as $tag) {
+                            $listing_tag_data[] = array (
+                                'tag_id' => $tag,
+                                'listing_id' => $listing_id
+                            );
+                        }
+                        $this->admin_model->update_listing_tags($listing_id, $listing_tag_data);
+
                         $listing_category_data = array(
                             'listing_id' => $listing_id,
                             'category_id' => set_value('listing_category_id'),
