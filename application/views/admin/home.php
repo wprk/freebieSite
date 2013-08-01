@@ -16,12 +16,12 @@
     <script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
     <script src="/includes/js/hideshow.js" type="text/javascript"></script>
     <script src="/includes/js/jquery.tablesorter.min.js" type="text/javascript"></script>
-    <script type="text/javascript" src="/includes/js/chosen.equalHeight.js"></script>
-    <script type="text/javascript" src="/includes/js/jquery.jquery.min.js"></script>
+    <script type="text/javascript" src="/includes/js/jquery.equalHeight.js"></script>
+    <script type="text/javascript" src="/includes/js/chosen.jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
                 $(".tablesorter").tablesorter();
-                $('.chosen-select').chosen();
+                $('.chosen-select').chosen({allow_single_deselect: true});
             }
         );
         $(document).ready(function () {
@@ -91,6 +91,7 @@
                         seloption += '<option value="' + option_info[0] + '">' + option_info[1] + '</option>';
                     });
                     jQuery('#listing_sub_category_id').append(seloption);
+                    jQuery(".chosen-select").trigger("chosen:updated");
                 });
             });
 

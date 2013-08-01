@@ -520,6 +520,7 @@ class Admin extends CI_Controller {
     {
         $page = array();
         $page['categories'] = $this->admin_model->get_categories();
+        $page['tags'] = $this->admin_model->get_tags();
         $page['listings'] = $this->admin_model->get_listings();
         return $this->load->view('admin/listings', $page, true);
     }
@@ -530,6 +531,7 @@ class Admin extends CI_Controller {
         $page['sites'] = $this->admin_model->get_sites();
         $page['categories'] = $this->admin_model->get_categories();
         $page['sub_categories'] = $this->admin_model->get_sub_categories(0);
+        $page['tags'] = $this->admin_model->get_tags();
         return $this->load->view('admin/add_listing', $page, true);
     }
 
@@ -537,10 +539,12 @@ class Admin extends CI_Controller {
     {
         $page = array();
         $listing_record = $this->admin_model->get_listing($id);
+        $listing_record->tag_ids = $this->admin_model->get_tags_by_listing($id);
         $page['listing_record'] = $listing_record;
         $page['sites'] = $this->admin_model->get_sites();
         $page['categories'] = $this->admin_model->get_categories();
         $page['sub_categories'] = $this->admin_model->get_sub_categories($listing_record->category_id);
+        $page['tags'] = $this->admin_model->get_tags();
         return $this->load->view('admin/edit_listing', $page, true);
     }
 

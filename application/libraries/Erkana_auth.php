@@ -147,7 +147,7 @@ class Erkana_auth {
                 }
 
                 if (do_hash($account->salt . $this->CI->input->post('password')) === $account->password_hash) {
-                    if ($account->$identifier === $this->CI->input->post($identifier))) {
+                    if ($account->$identifier === $this->CI->input->post($identifier)) {
                         $this->_establish_session($account);
                         return TRUE;
                     }

@@ -36,14 +36,16 @@
         </fieldset>
         <fieldset style="width:48%; float:left; margin-right: 3%;">
             <label>Category</label>
-            <select id="listing_category_id" name="listing_category_id" class="chosen-select" style="width:92%;" data-placeholder="Add Category to Listing...">
+            <select id="listing_category_id" name="listing_category_id" class="chosen-select" style="width:92%;">
+                <option vakue="">Add Category to Listing</option>
                 <?php foreach ($categories as $category) { ?>
                     <option<?php echo ($listing_record->category_id == $category['category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
                 <?php } ?>
             </select>
             <div style="height: 20px;"></div>
             <label>Sub Category</label>
-            <select id="listing_sub_category_id" name="listing_sub_category_id" class="chosen-select" style="width:92%;" data-placeholder="Add Sub Category to Listing...">
+            <select id="listing_sub_category_id" name="listing_sub_category_id" class="chosen-select" style="width:92%;">
+                <option vakue="">Add Sub Category to Listing</option>
                 <?php foreach($sub_categories as $sub_category) { ?>
                     <option<?php echo ($listing_record->sub_category_id == $sub_category['sub_category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $sub_category['sub_category_id']; ?>"><?php echo $sub_category['sub_category_name']; ?></option>
                 <?php } ?>
