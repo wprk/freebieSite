@@ -318,7 +318,7 @@ class Admin extends CI_Controller {
                             return array(
                                 'tag_id' => $tag_id,
                                 'tag_name' => $tag_data['tag_name']
-                            )
+                            );
                         } else {
                             if($this->input->post('return_url')) {
                                 redirect($this->input->post('return_url'));
