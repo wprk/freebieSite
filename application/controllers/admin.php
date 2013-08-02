@@ -314,13 +314,14 @@ class Admin extends CI_Controller {
                         'tag_slug' => $this->admin_model->slugify($tag_name)
                     );
                     $tag_id = $this->admin_model->create_tag($tag_data);
-                    die($tag_id);
                     if($tag_id > 0) {
                         if($this->input->get_post('ajax')) {
-                            return array(
+                            $tag = array(
                                 'tag_id' => $tag_id,
                                 'tag_name' => $tag_data['tag_name']
                             );
+                            die(print_r($tag));
+                            return $tag;
                         } else {
                             if($this->input->post('return_url')) {
                                 redirect($this->input->post('return_url'));
