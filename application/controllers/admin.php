@@ -88,6 +88,13 @@ class Admin extends CI_Controller {
                 $this->page_title = 'Add New Category';
                 $page['content'] = $this->content(array('add_category'));
                 break;
+            case "tags":
+                $this->action('add', 'tag');
+                $this->breadcrumbs[] = array('name' => "Tags", 'url' => '/admin/edit/tags');
+                $this->breadcrumbs[] = array('name' => "Add Tag", 'url' => '');
+                $this->page_title = 'Add New Tag';
+                $page['content'] = $this->content(array('add_tag'));
+                break;
             default:
                 $page['content'] = '';
             break;
@@ -291,6 +298,33 @@ class Admin extends CI_Controller {
                             redirect($this->input->post('return_url'));
                         } else {
                             $this->messages[] = array("type" => 'success', "content" => "Category added successfully");
+                        }
+                    } else {
+                        $this->messages[] = array("type" => 'error', "content" => "An error occured: Cause Unknown");
+                    }
+                } else {
+                    $this->form_messages = validation_errors('<h4 class="alert_error">','</h4>');
+                }
+                break;
+            case 'tag':
+                $this->form_validation->set_rules('tag_name', 'Tag Name', 'required');
+                if ($this->form_validation->run()) {
+                    $tag_data = array(
+                        'tag_name' => set_value('tag_name')
+                    );
+                    $tag_id = $this->admin_model->create_tag($tag_data);
+                    if($tag_id > 0) {
+                        if($this->input->post('ajax')) {
+                            return array(
+                                'tag_id' => $tag_id,
+                                'tag_name' => $tag_data['tag_name']
+                            )
+                        } else {
+                            if($this->input->post('return_url')) {
+                                redirect($this->input->post('return_url'));
+                            } else {
+                                $this->messages[] = array("type" => 'success', "content" => "Tag added successfully");
+                            }
                         }
                     } else {
                         $this->messages[] = array("type" => 'error', "content" => "An error occured: Cause Unknown");
