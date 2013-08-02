@@ -307,15 +307,16 @@ class Admin extends CI_Controller {
                 }
                 break;
             case 'tag':
-                $tag_name = $this->input->post('tag_name');
+                $tag_name = $this->input->get_post('tag_name');
                 if ($tag_name) {
                     $tag_data = array(
                         'tag_name' => $tag_name,
                         'tag_slug' => $this->admin_model->slugify($tag_name)
                     );
+                    die(print_r($tag_data));
                     $tag_id = $this->admin_model->create_tag($tag_data);
                     if($tag_id > 0) {
-                        if($this->input->post('ajax')) {
+                        if($this->input->get_post('ajax')) {
                             return array(
                                 'tag_id' => $tag_id,
                                 'tag_name' => $tag_data['tag_name']
