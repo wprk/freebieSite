@@ -26,7 +26,7 @@
                     create_option_text: 'Add Tag',
                     create_option: function(tag){
                           var chosen = this;
-                          $.post('/admin/add/listings/', {tag_name: tag}, function(data){
+                          $.post('/admin/add/listings/', {tag_name: tag, ajax: true}, function(data){
                             chosen.append_option({
                               value: data.tag_id,
                               text: data.tag_name
