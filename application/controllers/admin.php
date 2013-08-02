@@ -310,7 +310,8 @@ class Admin extends CI_Controller {
                 $tag_name = $this->input->post('tag_name');
                 if ($tag_name) {
                     $tag_data = array(
-                        'tag_name' => $tag_name
+                        'tag_name' => $tag_name,
+                        'tag_slug' => $this->admin_model->slugify($tag_name)
                     );
                     $tag_id = $this->admin_model->create_tag($tag_data);
                     if($tag_id > 0) {

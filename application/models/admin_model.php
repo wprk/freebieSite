@@ -277,7 +277,7 @@ class Admin_model extends CI_Model
 
     public function create_tag($tag_data)
     {
-        $this->db->where('tags.tag_slug', $tag_data['tag_slug']);
+        $this->db->where('tags.tag_name', $tag_data['tag_name']);
         $results = $this->db->get('tags');
         if($results->num_rows() == 1) {
             $row = $results->row();
