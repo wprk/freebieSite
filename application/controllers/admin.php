@@ -307,10 +307,10 @@ class Admin extends CI_Controller {
                 }
                 break;
             case 'tag':
-                $this->form_validation->set_rules('tag_name', 'Tag Name', 'required');
-                if ($this->form_validation->run()) {
+                $tag_name = $this->input->post('tag_name');
+                if ($tag_name) {
                     $tag_data = array(
-                        'tag_name' => set_value('tag_name')
+                        'tag_name' => $tag_name
                     );
                     $tag_id = $this->admin_model->create_tag($tag_data);
                     if($tag_id > 0) {
@@ -330,7 +330,7 @@ class Admin extends CI_Controller {
                         $this->messages[] = array("type" => 'error', "content" => "An error occured: Cause Unknown");
                     }
                 } else {
-                    $this->form_messages = validation_errors('<h4 class="alert_error">','</h4>');
+                    $this->form_messages = '<h4 class="alert_error">A tag name was not submitted!</h4>');
                 }
                 break;
             case '':
