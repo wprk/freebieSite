@@ -331,7 +331,7 @@ class Admin extends CI_Controller {
                         $this->messages[] = array("type" => 'error', "content" => "An error occured: Cause Unknown");
                     }
                 } else {
-                    $this->form_messages = array('<h4 class="alert_error">A tag name was not submitted!</h4>');
+                    $this->form_messages = '<h4 class="alert_error">A tag name was not submitted!</h4>';
                 }
                 break;
             case '':
