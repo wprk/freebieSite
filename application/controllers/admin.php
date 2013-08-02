@@ -320,7 +320,6 @@ class Admin extends CI_Controller {
                                 'tag_id' => $tag_id,
                                 'tag_name' => $tag_data['tag_name']
                             );
-                            die(print_r($tag));
                             return $tag;
                         } else {
                             if($this->input->post('return_url')) {
