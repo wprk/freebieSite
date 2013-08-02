@@ -7,6 +7,10 @@
             <input id="listing_title" name="listing_title" type="text">
         </fieldset>
         <fieldset>
+            <label>Alternative Listing Title</label>
+            <input id="listing_alt_title" name="listing_alt_title" type="text">
+        </fieldset>
+        <fieldset>
             <label>Listing Slug</label>
             <input id="listing_uri" name="listing_uri" type="text">
         </fieldset>
@@ -58,6 +62,7 @@
                     <option value="<?php echo $tag['tag_id']; ?>"><?php echo $tag['tag_name']; ?></option>
                 <?php } ?>
             </select>
+            <input type="hidden" value="1" name="add_tags">
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Expiry</label>

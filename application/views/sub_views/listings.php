@@ -17,6 +17,9 @@
 </div>
 
 <div class="right">
+    <?php if(isset($tag)) { ?>
+        <h2><?php echo $tag['tag_name']; ?> Offers</h2>
+    <?php } ?>
     <?php $listing_count = 0; foreach($listings as $listing) {
         $listing_count++; ?>
         <div class="listing" itemscope itemtype="http://schema.org/Product">

@@ -7,6 +7,10 @@
             <input id="listing_title" name="listing_title" value="<?php echo $listing_record->listing_title; ?>" type="text">
         </fieldset>
         <fieldset>
+            <label>Alternative Listing Title</label>
+            <input id="listing_alt_title" name="listing_alt_title" value="<?php echo $listing_record->listing_alt_title; ?>" type="text">
+        </fieldset>
+        <fieldset>
             <label>Listing Slug</label>
             <input id="listing_uri" name="listing_uri" value="<?php echo $listing_record->listing_uri; ?>" type="text">
         </fieldset>
@@ -53,11 +57,12 @@
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Tags</label>
-            <select name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
+            <select id="listing_tags" name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
                 <?php foreach ($tags as $tag) { ?>
                     <option<?php echo (in_array($tag['tag_id'], $listing_record->tag_ids) ? ' selected="selected"' : '') ?>  value="<?php echo $tag['tag_id']; ?>"><?php echo $tag['tag_name']; ?></option>
                 <?php } ?>
             </select>
+            <input type="hidden" value="1" name="add_tags">
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Expiry</label>

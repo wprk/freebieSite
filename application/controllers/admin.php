@@ -209,6 +209,7 @@ class Admin extends CI_Controller {
         switch($type) {
             case 'listing':
                 $this->form_validation->set_rules('listing_title', 'Listing Title', 'required');
+                $this->form_validation->set_rules('listing_alt_title', 'Alternative Listing Title', 'required');
                 $this->form_validation->set_rules('listing_uri', 'Listing Slug', 'required');
                 $this->form_validation->set_rules('listing_url', 'Listing URL', 'required');
                 $this->form_validation->set_rules('listing_tracking_img', 'Listing Tracking Image', '');
@@ -223,6 +224,7 @@ class Admin extends CI_Controller {
                 if ($this->form_validation->run()) {
                     $listing_data = array(
                         'listing_title' => set_value('listing_title'),
+                        'listing_alt_title' => set_value('listing_alt_title'),
                         'listing_uri' =>  $this->admin_model->slugify(set_value('listing_uri')),
                         'listing_url' => set_value('listing_url'),
                         'listing_affiliate' => set_value('listing_affiliate'),
@@ -242,6 +244,12 @@ class Admin extends CI_Controller {
                                 'listing_desc_value' => mt_rand(1,2)
                             );
                             $this->admin_model->create_listing_alt_desc($listing_alt_desc_data);
+                            $listing_alt_title_data = array (
+                                'site_id' => $site['site_id'],
+                                'listing_id' => $listing_id,
+                                'listing_title_value' => mt_rand(1,2)
+                            );
+                            $this->admin_model->create_listing_alt_title($listing_alt_title_data);
                         }
 
                         foreach($this->input->post('listing_tags') as $tag) {
@@ -355,6 +363,7 @@ class Admin extends CI_Controller {
         switch($type) {
             case 'listing':
                 $this->form_validation->set_rules('listing_title', 'Listing Title', 'required');
+                $this->form_validation->set_rules('listing_alt_title', 'Alternative Listing Title', 'required');
                 $this->form_validation->set_rules('listing_uri', 'Listing Slug', 'required');
                 $this->form_validation->set_rules('listing_url', 'Listing URL', 'required');
                 $this->form_validation->set_rules('listing_tracking_img', 'Listing Tracking Image', '');
@@ -369,6 +378,7 @@ class Admin extends CI_Controller {
                 if ($this->form_validation->run()) {
                     $listing_data = array(
                         'listing_title' => set_value('listing_title'),
+                        'listing_alt_title' => set_value('listing_alt_title'),
                         'listing_uri' =>  $this->admin_model->slugify(set_value('listing_uri')),
                         'listing_url' => set_value('listing_url'),
                         'listing_affiliate' => set_value('listing_affiliate'),
@@ -381,14 +391,18 @@ class Admin extends CI_Controller {
                     );
                     $listing_id = $this->admin_model->edit_listing($this->edit_id, $listing_data);
                     if($listing_id > 0) {
+
                         $tags = $this->input->post('listing_tags');
-                        foreach($tags as $tag) {
-                            $listing_tag_data[] = array (
-                                'tag_id' => $tag,
-                                'listing_id' => $listing_id
-                            );
+                        $add_tags = $this->input->post('add_tags');
+                        if($add_tags) {
+                            foreach($tags as $tag) {
+                                $listing_tag_data[] = array (
+                                    'tag_id' => $tag,
+                                    'listing_id' => $listing_id
+                                );
+                            }
+                            $this->admin_model->update_listing_tags($listing_id, $listing_tag_data);
                         }
-                        $this->admin_model->update_listing_tags($listing_id, $listing_tag_data);
 
                         $listing_category_data = array(
                             'listing_id' => $listing_id,

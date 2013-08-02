@@ -14,13 +14,13 @@
                     <div class="submit_link">
                         <form action="/admin/edit/listings/<?php echo $expired['listing_id']; ?>/" autocomplete="on" method="post">
                             <input class="datepicker" id="listing_expires" name="listing_expires" type="text" value="<?php echo ($expired['listing_expires'] != '' ? $expired['listing_expires'] : ''); ?>" size="8" style="text-align: center;">
-
-                            <input name="listing_title" value="<?php echo $expired['listing_title']; ?>" type="hidden">
+                            <input name="listing_title" value="<?php echo $oldest['listing_title']; ?>" type="hidden">
+                            <input name="listing_alt_title" value="<?php echo $oldest['listing_alt_title']; ?>" type="hidden">                            <input name="listing_uri" value="<?php echo $oldest['listing_uri']; ?>" type="hidden">
                             <input name="listing_url" value="<?php echo $expired['listing_url']; ?>" type="hidden">
                             <input name="listing_desc" value="<?php echo $expired['listing_desc']; ?>" type="hidden">
+                            <input name="listing_alt_desc" value="<?php echo $expired['listing_alt_desc']; ?>" type="hidden">
                             <input name="listing_category_id" value="<?php echo $expired['category_id']; ?>" type="hidden">
                             <input name="listing_sub_category_id" value="<?php echo $expired['sub_category_id']; ?>" type="hidden">
-                            <input name="listing_tags" value="<?php echo $expired['listing_tags']; ?>" type="hidden">
                             <input name="listing_status" value="<?php echo $expired['listing_status']; ?>" type="hidden">
                             <input name="return_url" value="/admin/check/listings/#oldest" type="hidden">
                             <input type="submit" name="submitted" value="Extend" class="alt_btn">
@@ -29,12 +29,13 @@
                             <input type="submit" value="Edit" class="alt_btn">
                         </a>
                         <form action="/admin/edit/listings/<?php echo $expired['listing_id']; ?>/" autocomplete="on" method="post">
-                            <input name="listing_title" value="<?php echo $expired['listing_title']; ?>" type="hidden">
+                            <input name="listing_title" value="<?php echo $oldest['listing_title']; ?>" type="hidden">
+                            <input name="listing_alt_title" value="<?php echo $oldest['listing_alt_title']; ?>" type="hidden">                            <input name="listing_uri" value="<?php echo $expired['listing_uri']; ?>" type="hidden">
                             <input name="listing_url" value="<?php echo $expired['listing_url']; ?>" type="hidden">
                             <input name="listing_desc" value="<?php echo $expired['listing_desc']; ?>" type="hidden">
+                            <input name="listing_alt_desc" value="<?php echo $expired['listing_alt_desc']; ?>" type="hidden">
                             <input name="listing_category_id" value="<?php echo $expired['category_id']; ?>" type="hidden">
                             <input name="listing_sub_category_id" value="<?php echo $expired['sub_category_id']; ?>" type="hidden">
-                            <input name="listing_tags" value="<?php echo $expired['listing_tags']; ?>" type="hidden">
                             <input name="listing_expires" value="<?php echo $expired['listing_expires']; ?>" type="hidden">
                             <input name="listing_status" value="2" type="hidden">
                             <input name="return_url" value="/admin/check/listings/#oldest" type="hidden">
@@ -62,11 +63,12 @@
                 <div class="submit_link">
                     <form action="/admin/edit/listings/<?php echo $oldest['listing_id']; ?>/" autocomplete="on" method="post">
                         <input name="listing_title" value="<?php echo $oldest['listing_title']; ?>" type="hidden">
+                        <input name="listing_alt_title" value="<?php echo $oldest['listing_alt_title']; ?>" type="hidden">                        <input name="listing_uri" value="<?php echo $oldest['listing_uri']; ?>" type="hidden">
                         <input name="listing_url" value="<?php echo $oldest['listing_url']; ?>" type="hidden">
                         <input name="listing_desc" value="<?php echo $oldest['listing_desc']; ?>" type="hidden">
+                        <input name="listing_alt_desc" value="<?php echo $oldest['listing_alt_desc']; ?>" type="hidden">
                         <input name="listing_category_id" value="<?php echo $oldest['category_id']; ?>" type="hidden">
                         <input name="listing_sub_category_id" value="<?php echo $oldest['sub_category_id']; ?>" type="hidden">
-                        <input name="listing_tags" value="<?php echo $oldest['listing_tags']; ?>" type="hidden">
                         <input name="listing_expires" value="<?php echo $oldest['listing_expires']; ?>" type="hidden">
                         <input name="listing_status" value="<?php echo $oldest['listing_status']; ?>" type="hidden">
                         <input name="return_url" value="/admin/check/listings/" type="hidden">
@@ -77,11 +79,13 @@
                     </a>
                     <form action="/admin/edit/listings/<?php echo $oldest['listing_id']; ?>/" autocomplete="on" method="post">
                         <input name="listing_title" value="<?php echo $oldest['listing_title']; ?>" type="hidden">
+                        <input name="listing_alt_title" value="<?php echo $oldest['listing_alt_title']; ?>" type="hidden">
+                        <input name="listing_uri" value="<?php echo $oldest['listing_uri']; ?>" type="hidden">
                         <input name="listing_url" value="<?php echo $oldest['listing_url']; ?>" type="hidden">
                         <input name="listing_desc" value="<?php echo $oldest['listing_desc']; ?>" type="hidden">
+                        <input name="listing_alt_desc" value="<?php echo $oldest['listing_alt_desc']; ?>" type="hidden">
                         <input name="listing_category_id" value="<?php echo $oldest['category_id']; ?>" type="hidden">
                         <input name="listing_sub_category_id" value="<?php echo $oldest['sub_category_id']; ?>" type="hidden">
-                        <input name="listing_tags" value="<?php echo $oldest['listing_tags']; ?>" type="hidden">
                         <input name="listing_expires" value="<?php echo $oldest['listing_expires']; ?>" type="hidden">
                         <input name="listing_status" value="2" type="hidden">
                         <input name="return_url" value="/admin/check/listings/" type="hidden">

@@ -30,9 +30,28 @@ class Admin_model extends CI_Model
         }
     }
 
+    public function get_site_alt_title($listing_id, $site_id) {
+        $result = $this->db->query("SELECT listing_titles.listing_title_value FROM listing_titles WHERE listing_id = $listing_id AND site_id = $site_id;");
+        if($result->num_rows() == 1) {
+            $row = $result->row_array();
+            return $row['listing_title_value'];
+        } else {
+            return false;
+        }
+    }
+
     public function create_listing_alt_desc($listing_alt_descs_data)
     {
         if($this->db->insert("listing_descs", $listing_alt_descs_data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function create_listing_alt_title($listing_alt_titles_data)
+    {
+        if($this->db->insert("listing_titles", $listing_alt_titles_data)) {
             return true;
         } else {
             return false;
@@ -44,6 +63,17 @@ class Admin_model extends CI_Model
         $this->db->where('listing_id', $listing_id);
         $this->db->where('site_id', $site_id);
         if($this->db->update("listing_descs", $listing_alt_descs_data)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public function update_listing_alt_title($listing_id, $site_id, $listing_alt_titles_data)
+    {
+        $this->db->where('listing_id', $listing_id);
+        $this->db->where('site_id', $site_id);
+        if($this->db->update("listing_titles", $listing_alt_titles_data)) {
             return true;
         } else {
             return false;

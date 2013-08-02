@@ -89,7 +89,8 @@ class Site_model extends CI_Model
         $this->db->select('listings.*');
         $this->db->where('listing_affiliate', 1);
         $this->db->where('listing_status', 1);
-        $this->db->join('listing_descs', "site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
+        $this->db->join('listing_descs', "listing_descs.site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
+        $this->db->join('listing_titles', "listing_titles.site_id = $this->site_id AND listing_titles.listing_id = listings.listing_id", "left");
         $this->db->order_by('listing_created', 'DESC');
         $alistings = $this->db->get('listings');
         $alistings_count = $alistings->num_rows();
@@ -98,7 +99,8 @@ class Site_model extends CI_Model
         $this->db->select('listings.*');
         $this->db->where('listing_affiliate', 0);
         $this->db->where('listing_status', 1);
-        $this->db->join('listing_descs', "site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
+        $this->db->join('listing_descs', "listing_descs.site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
+        $this->db->join('listing_titles', "listing_titles.site_id = $this->site_id AND listing_titles.listing_id = listings.listing_id", "left");
         $this->db->order_by('listing_created', 'DESC');
         $blistings = $this->db->get('listings');
         $blistings_count = $blistings->num_rows();
@@ -117,7 +119,7 @@ class Site_model extends CI_Model
                     $listing_row = $$type->row_array($i);
                         $listings[] = array(
                             'listing_id' => $listing_row['listing_id'],
-                            'listing_title' => $listing_row['listing_title'],
+                            'listing_title' => $this->get_listing_title($listing_row),
                             'listing_url' => $listing_row['listing_url'],
                             'listing_tracking_img' => $listing_row['listing_tracking_img'],
                             'listing_desc' => $this->get_listing_description($listing_row),
@@ -195,6 +197,20 @@ class Site_model extends CI_Model
         } else {
             return array();
         }
+    }
+
+    private function get_listing_title($listing) {
+        $this->db->select('listing_titles.listing_title_value');
+        $this->db->where('listing_titles.listing_id', $listing['listing_id']);
+        $this->db->where('listing_titles.site_id', $this->site_id);
+        $result = $this->db->get('listing_titles');
+        if ($result->num_rows() > 0) {
+            $row = $result->row();
+            $title_value = $row->listing_title_value;
+        } else {
+            return NULL;
+        }
+        return ($title_value == 2 ? $listing['listing_alt_title'] : $listing['listing_title']);
     }
 
     private function get_listing_description($listing) {
