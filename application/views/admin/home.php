@@ -21,21 +21,24 @@
     <script type="text/javascript">
         $(document).ready(function () {
                 $(".tablesorter").tablesorter();
-                $('.chosen-select').chosen({
+                $('#listing_tags').chosen({
                     allow_single_deselect: true,
+                    skip_no_results: true,
                     create_option_text: 'Add Tag',
                     create_option: function(tag){
                           var chosen = this;
-                          $.post('/admin/add/listings/', {tag_name: tag, ajax: true}, function(data){
-                            chosen.append_option({
-                              value: data.tag_id,
-                              text: data.tag_name
-                            });
+                          $.post('/admin/add/tags/', {tag_name: tag, ajax: '1'}).done(function(result) {
+                                  values = $.parseJSON(result);
+                                  chosen.append_option({
+                                  value: values.tag_id,
+                                  text: values.tag_name
+                              });
                           });
-                        }
-                    });
-                }
-        );
+                    }
+                });
+                $('#listing_category_id').chosen({allow_single_deselect: true});
+                $('#listing_sub_category_id').chosen({allow_single_deselect: true});
+        });
         $(document).ready(function () {
 
             //When page loads...

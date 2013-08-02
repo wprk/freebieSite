@@ -315,13 +315,19 @@ class Admin extends CI_Controller {
                     );
                     $tag_id = $this->admin_model->create_tag($tag_data);
                     if($tag_id > 0) {
+                        die(json_encode(
+                            array(
+                                'tag_id' => $tag_id,
+                                'tag_name' => $tag_data['tag_name']
+                            )
+                        ));
                         if($this->input->get_post('ajax')) {
-                            echo json_encode(
+                            die(json_encode(
                                 array(
                                     'tag_id' => $tag_id,
                                     'tag_name' => $tag_data['tag_name']
                                 )
-                            );
+                            ));
                         } else {
                             if($this->input->post('return_url')) {
                                 redirect($this->input->post('return_url'));

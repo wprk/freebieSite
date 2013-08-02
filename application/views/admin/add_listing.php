@@ -53,7 +53,7 @@
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Tags</label>
-            <select name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
+            <select id="listing_tags" name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
                 <?php foreach ($tags as $tag) { ?>
                     <option value="<?php echo $tag['tag_id']; ?>"><?php echo $tag['tag_name']; ?></option>
                 <?php } ?>
