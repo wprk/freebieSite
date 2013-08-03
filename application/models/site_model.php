@@ -10,6 +10,18 @@ class Site_model extends CI_Model
         $this->site_id = 1;
     }
 
+    public function get_site()
+    {
+        $site_id = $this->site_id;
+        $this->db->where('site_id', $site_id);
+        $results = $this->db->get('sites');
+        if($results->num_rows() == 1) {
+            return $results->row_array();
+        } else {
+            return array();
+        }
+    }
+
     public function get_category_from_slug($category_slug)
     {
         $this->db->where('category_slug', $category_slug);
@@ -62,13 +74,26 @@ class Site_model extends CI_Model
 
     public function get_sub_categories($category_id)
     {
-        $this->db->where('category_id', $category_id);
+        $this->db->where('sub_categories.category_id', $category_id);
         $this->db->order_by('sub_category_name ASC');
         $results = $this->db->get('sub_categories');
         if($results->num_rows() > 0) {
             return $results->result_array();
         } else {
             return array();
+        }
+    }
+
+    public function get_more_tags($tag_id)
+    {
+        $this->db->order_by('RAND(), tag_name ASC');
+        $this->db->limit(3);
+        $tags = $this->db->get('tags');
+
+        if($tags->num_rows() > 0) {
+            return $tags->result_array();
+        } else {
+            return array('error' => 'failed');
         }
     }
 
@@ -91,7 +116,7 @@ class Site_model extends CI_Model
         $this->db->where('listing_status', 1);
         $this->db->join('listing_descs', "listing_descs.site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
         $this->db->join('listing_titles', "listing_titles.site_id = $this->site_id AND listing_titles.listing_id = listings.listing_id", "left");
-        $this->db->order_by('listing_created', 'DESC');
+        $this->db->order_by('listing_featured, listing_created', 'DESC');
         $alistings = $this->db->get('listings');
         $alistings_count = $alistings->num_rows();
 
@@ -101,21 +126,24 @@ class Site_model extends CI_Model
         $this->db->where('listing_status', 1);
         $this->db->join('listing_descs', "listing_descs.site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
         $this->db->join('listing_titles', "listing_titles.site_id = $this->site_id AND listing_titles.listing_id = listings.listing_id", "left");
-        $this->db->order_by('listing_created', 'DESC');
+        $this->db->order_by('listing_featured, listing_created', 'DESC');
         $blistings = $this->db->get('listings');
         $blistings_count = $blistings->num_rows();
 
         if(($alistings_count == 0) && ($blistings_count == 0)) {
             return array();
         } else {
-            if($alistings_count > 0) {
-                $listing_types[] = 'alistings';
-            }
+
             if($blistings_count > 0) {
                 $listing_types[] = 'blistings';
             }
+            if($alistings_count > 0) {
+                $listing_types[] = 'alistings';
+            }
             for($i = 0; $i < 15; $i++) {
                 foreach($listing_types as $type) {
+                    $type_count = $type.'_count';
+                    if ($$type_count > $i) {
                     $listing_row = $$type->row_array($i);
                         $listings[] = array(
                             'listing_id' => $listing_row['listing_id'],
@@ -127,6 +155,7 @@ class Site_model extends CI_Model
                             'listing_expires' => $listing_row['listing_expires'],
                             'listing_created' => $listing_row['listing_created']
                         );
+                    }
                 }
             }
             return $listings;

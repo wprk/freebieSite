@@ -11,10 +11,6 @@
             <input id="listing_alt_title" name="listing_alt_title" value="<?php echo $listing_record->listing_alt_title; ?>" type="text">
         </fieldset>
         <fieldset>
-            <label>Listing Slug</label>
-            <input id="listing_uri" name="listing_uri" value="<?php echo $listing_record->listing_uri; ?>" type="text">
-        </fieldset>
-        <fieldset>
             <label>Listing URL</label>
             <input id="listing_url" name="listing_url" value="<?php echo $listing_record->listing_url; ?>" type="text">
         </fieldset>

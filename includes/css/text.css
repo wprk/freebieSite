@@ -58,20 +58,29 @@
 	padding-bottom: 2px;
 	padding-top: 1px;
 }
+.crumbs a {
+	text-transform:lowercase;
+}
 A:hover {text-decoration: underline;}
 .crumbs_blk {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-size: 80%;
 	font-style: normal;
-	color: #333;
+	color: #666;
 	font-weight: normal;
 	text-decoration: none;
+	text-transform:lowercase;
+}
+h1.current {
+	font-weight: bold;
+	color: #333;
+	display: inline;
 }
 .crumbs_blk_pad {
 	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
 	font-size: 80%;
 	font-style: normal;
-	color: #333;
+	color: #666;
 	font-weight: normal;
 	text-decoration: none;
 	text-indent: 5px;

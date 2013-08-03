@@ -82,7 +82,6 @@ class Admin extends CI_Controller {
             break;
             case "categories":
                 $this->action('add', 'category');
-                $this->save_routes(); // Updates Routes file
                 $this->breadcrumbs[] = array('name' => "Categories", 'url' => '/admin/edit/categories');
                 $this->breadcrumbs[] = array('name' => "Add Category", 'url' => '');
                 $this->page_title = 'Add New Category';
@@ -143,7 +142,6 @@ class Admin extends CI_Controller {
                     $this->edit_id = $id;
                     if($this->input->post('submitted')) {
                         $this->action('edit', 'category');
-                        $this->save_routes(); // Updates Routes file
                     }
                     $this->breadcrumbs[] = array('name' => "Categories", 'url' => '/admin/edit/categories/');
                     $this->breadcrumbs[] = array('name' => "Edit", 'url' => '');
@@ -210,7 +208,6 @@ class Admin extends CI_Controller {
             case 'listing':
                 $this->form_validation->set_rules('listing_title', 'Listing Title', 'required');
                 $this->form_validation->set_rules('listing_alt_title', 'Alternative Listing Title', 'required');
-                $this->form_validation->set_rules('listing_uri', 'Listing Slug', 'required');
                 $this->form_validation->set_rules('listing_url', 'Listing URL', 'required');
                 $this->form_validation->set_rules('listing_tracking_img', 'Listing Tracking Image', '');
                 $this->form_validation->set_rules('listing_affiliate', 'Listing Affiliate', '');
@@ -225,7 +222,7 @@ class Admin extends CI_Controller {
                     $listing_data = array(
                         'listing_title' => set_value('listing_title'),
                         'listing_alt_title' => set_value('listing_alt_title'),
-                        'listing_uri' =>  $this->admin_model->slugify(set_value('listing_uri')),
+                        'listing_uri' =>  $this->admin_model->slugify(set_value('listing_title')),
                         'listing_url' => set_value('listing_url'),
                         'listing_affiliate' => set_value('listing_affiliate'),
                         'listing_featured' => set_value('listing_featured'),
@@ -252,11 +249,17 @@ class Admin extends CI_Controller {
                             $this->admin_model->create_listing_alt_title($listing_alt_title_data);
                         }
 
-                        foreach($this->input->post('listing_tags') as $tag) {
+                        $post_tags = $this->input->post('listing_tags');
+                        if(is_array($post_tags)) {
+                        foreach($post_tags as $tag) {
                             $listing_tag_data = array (
                                 'tag_id' => $tag,
                                 'listing_id' => $listing_id
                             );
+                            $this->admin_model->create_listing_tag($listing_tag_data);
+                        }
+                        } else {
+                            $listing_tag_data = $post_tags;
                             $this->admin_model->create_listing_tag($listing_tag_data);
                         }
 
@@ -292,7 +295,6 @@ class Admin extends CI_Controller {
                 break;
             case 'category':
                 $this->form_validation->set_rules('category_name', 'Category Name', 'required');
-                $this->form_validation->set_rules('category_slug', 'Category Slug', 'required');
                 $this->form_validation->set_rules('category_desc', 'Category Desc', '');
                 if ($this->form_validation->run()) {
                     $category_data = array(
@@ -301,6 +303,7 @@ class Admin extends CI_Controller {
                         'category_desc' => set_value('category_desc')
                     );
                     $category_id = $this->admin_model->create_category($category_data);
+                    $this->save_routes(); // Updates Routes file
                     if($category_id > 0) {
                         if($this->input->post('return_url')) {
                             redirect($this->input->post('return_url'));
@@ -322,6 +325,7 @@ class Admin extends CI_Controller {
                         'tag_slug' => $this->admin_model->slugify($tag_name)
                     );
                     $tag_id = $this->admin_model->create_tag($tag_data);
+                    $this->save_routes(); // Updates Routes file
                     if($tag_id > 0) {
                         die(json_encode(
                             array(
@@ -364,7 +368,6 @@ class Admin extends CI_Controller {
             case 'listing':
                 $this->form_validation->set_rules('listing_title', 'Listing Title', 'required');
                 $this->form_validation->set_rules('listing_alt_title', 'Alternative Listing Title', 'required');
-                $this->form_validation->set_rules('listing_uri', 'Listing Slug', 'required');
                 $this->form_validation->set_rules('listing_url', 'Listing URL', 'required');
                 $this->form_validation->set_rules('listing_tracking_img', 'Listing Tracking Image', '');
                 $this->form_validation->set_rules('listing_affiliate', 'Listing Affiliate', '');
@@ -379,7 +382,7 @@ class Admin extends CI_Controller {
                     $listing_data = array(
                         'listing_title' => set_value('listing_title'),
                         'listing_alt_title' => set_value('listing_alt_title'),
-                        'listing_uri' =>  $this->admin_model->slugify(set_value('listing_uri')),
+                        'listing_uri' =>  $this->admin_model->slugify(set_value('listing_title')),
                         'listing_url' => set_value('listing_url'),
                         'listing_affiliate' => set_value('listing_affiliate'),
                         'listing_featured' => set_value('listing_featured'),
@@ -436,7 +439,6 @@ class Admin extends CI_Controller {
                 break;
             case 'category':
                 $this->form_validation->set_rules('category_name', 'Category Name', 'required');
-                $this->form_validation->set_rules('category_slug', 'Category Slug', 'required');
                 $this->form_validation->set_rules('category_desc', 'Category Desc', '');
                 if ($this->form_validation->run()) {
                     $category_data = array(
@@ -445,6 +447,7 @@ class Admin extends CI_Controller {
                         'category_desc' => set_value('category_desc')
                     );
                     $category_id = $this->admin_model->edit_category($this->edit_id, $category_data);
+                    $this->save_routes(); // Updates Routes file
                     if($category_id > 0) {
                         if($this->input->post('return_url')) {
                             redirect($this->input->post('return_url'));

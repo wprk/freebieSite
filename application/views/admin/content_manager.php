@@ -22,7 +22,7 @@
                     <th>Category</th>
                     <th>Featured</th>
                     <th>Affiliate</th>
-                    <th>Created On</th>
+                    <th>Last Edited On</th>
                     <th>Status</th>
                     <th>Actions</th>
                 </tr>

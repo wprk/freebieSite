@@ -1,14 +1,11 @@
-<?php if(isset($tag)) {
-    $category['category_slug'] = "latest";
-} ?>
 <div class="left">
-    <?php if($category['category_slug'] == "latest") { ?>
+    <?php if(isset($category) && $category['category_slug'] == "latest") { ?>
         <h1 class="section_normal">latest freebies</h1>
     <?php } else { ?>
         <a href="/" class="title_big">latest freebies</a>
     <?php } ?>
     <?php foreach($categories as $cat) { ?>
-        <?php if($category['category_slug'] == $cat['category_slug']) { ?>
+        <?php if(isset($category) && $category['category_slug'] == $cat['category_slug']) { ?>
             <h1 class="section_normal"><?php echo $cat['category_name'];?></h1>
         <?php } else { ?>
             <a href="/<?php echo $cat['category_slug'];?>/" class="title_big"><?php echo $cat['category_name'];?></a>
@@ -17,9 +14,6 @@
 </div>
 
 <div class="right">
-    <?php if(isset($tag)) { ?>
-        <h2><?php echo $tag['tag_name']; ?> Offers</h2>
-    <?php } ?>
     <?php $listing_count = 0; foreach($listings as $listing) {
         $listing_count++; ?>
         <div class="listing" itemscope itemtype="http://schema.org/Product">
@@ -44,7 +38,7 @@
                 <?php if (empty($listing['listing_tags'])) echo 'None'; ?>
             </div>
         </div>
-        <?php if( !($listing_count%3) && ($listing_count <= 9) ) { ?>
+        <?php if( (!($listing_count%3) && ($listing_count <= 9)) || ( (count($listings) <= 2) && ($listing_count == count($listings)) ) ) { ?>
             <div class="googlead">
             <script type="text/javascript"><!--
                 google_ad_client = "ca-pub-5239608422081333";
