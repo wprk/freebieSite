@@ -9,7 +9,7 @@
                                 <?php echo $subcat['sub_category_name'];?>
                             </h1>
                         <?php } else { ?>
-                            <a class="crumbs_blk" href="/<?php echo $category['category_slug'];?>/<?php echo $subcat['sub_category_slug'];?>">
+                            <a class="crumbs_blk" href="/<?php echo $category['category_slug'];?>/<?php echo $subcat['sub_category_slug'];?>/">
                                 <?php echo $subcat['sub_category_name'];?>
                             </a>
                         <?php } ?>
@@ -20,7 +20,7 @@
                 <?php } ?>
                 <?php if (isset($more_tags)) { ?>
                     <?php foreach($more_tags as $xtag) { ?>
-                        <a class="crumbs_blk" href="/<?php echo $xtag['tag_slug'];?>">
+                        <a class="crumbs_blk" href="/<?php echo $xtag['tag_slug'];?>/">
                             <?php echo $xtag['tag_name'];?>
                         </a>
                         |

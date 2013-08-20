@@ -1,5 +1,6 @@
 <?php echo $header; ?>
 <body>
+<div id="site_container">
     <div id="header">
         <div class="wrap">
             <a name="top"></a>

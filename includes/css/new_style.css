@@ -1,3 +1,14 @@
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+#site_container {
+    min-height:100%;
+    position:relative;
+}
+
 .wrap {
     width: 1000px;
     padding: 0;
@@ -54,7 +65,7 @@
 }
 
 #content {
-    padding: 20px 0 0 0;
+    padding: 20px 0 131px 0;
     clear: both;
 }
 
@@ -132,6 +143,12 @@
 
 #content .right .backtotop {
 
+}
+
+#footer_container {
+    position:absolute;
+    bottom:0;
+    width:100%;
 }
 
 #footer_divider {

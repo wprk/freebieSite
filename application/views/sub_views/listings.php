@@ -21,7 +21,7 @@
                 <img itemprop="image" src="/includes/images/listings/<?php echo $listing['listing_id'];?>.png" width="115" height="115" alt="<?php echo $listing['listing_title'];?>">
             </div>
             <div class="list_title">
-                <a href="<?php echo str_replace('&', '&amp;', $listing['listing_url']); ?>" class="external title" itemprop="url">
+                <a href="<?php echo str_replace('&', '&amp;', $listing['listing_url']); ?>" class="external title" itemprop="url" target="_blank">
                     <span itemprop="name"><?php echo $listing['listing_title'];?></span>
                 </a>
                 <?php echo (strlen($listing['listing_tracking_img']) > 0 ? '<img src="'.$listing['listing_tracking_img'].'" width="1" height="1" style="float:right;" />' : '') ; ?>

@@ -34,6 +34,7 @@
         "http://www.w3.org/TR/html4/strict.dtd">
     <html>
     <head>
+        <meta http-equiv="Content-Language" content="en-gb">
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
         <title><?= $site['site_name']; ?> | <?php echo $category['category_name']; ?><?php echo ($category['category_slug'] == "latest" ? '' : (strlen($sub_category['sub_category_name']) > 0 ? ' | '.$sub_category['sub_category_name'] : '')); ?></title>
         <meta name="description" content="<?php echo ($category['category_slug'] == "latest" ? $category['category_desc'] : ($sub_category ? $sub_category['sub_category_desc'] : $category['category_desc'])); ?>">
