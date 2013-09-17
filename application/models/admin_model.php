@@ -335,7 +335,7 @@ class Admin_model extends CI_Model
     }
 
     function slugify($str, $find_and_replace = array('&' => 'and', 'amp;' => 'and'), $delimiter = '-') {
-        if( !empty($find_and_replace) ) {
+        if( is_array($find_and_replace) ) {
             $find = array_keys($find_and_replace);
             $replace = array_values($find_and_replace);
             $str = str_replace($find, $replace, $str);
@@ -347,5 +347,14 @@ class Admin_model extends CI_Model
         $clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
 
         return $clean;
+    }
+
+    function create_img($imgData)
+    {
+        if($this->db->on_duplicate("listing_imgs", $imgData)) {
+            return $this->db->insert_id();
+        } else {
+            return false;
+        }
     }
 }

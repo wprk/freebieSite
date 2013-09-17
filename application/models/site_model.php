@@ -111,23 +111,29 @@ class Site_model extends CI_Model
     public function get_listings()
     {
         $this->db->_protect_identifiers=false;
-        $this->db->select('listings.*');
-        $this->db->where('listing_affiliate', 1);
-        $this->db->where('listing_status', 1);
+        $this->db->select('listings.*, listing_imgs.*');
+        $this->db->from('listings, listing_imgs');
+        $this->db->where('listings.listing_affiliate', 1);
+        $this->db->where('listings.listing_status', 1);
+        $this->db->where('listing_imgs.listing_id = listings.listing_id');
+        $this->db->where('listing_imgs.img_size', '115x115');
         $this->db->join('listing_descs', "listing_descs.site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
         $this->db->join('listing_titles', "listing_titles.site_id = $this->site_id AND listing_titles.listing_id = listings.listing_id", "left");
         $this->db->order_by('listing_featured, listing_created', 'DESC');
-        $alistings = $this->db->get('listings');
+        $alistings = $this->db->get();
         $alistings_count = $alistings->num_rows();
 
         $this->db->_protect_identifiers=false;
-        $this->db->select('listings.*');
-        $this->db->where('listing_affiliate', 0);
-        $this->db->where('listing_status', 1);
+        $this->db->select('listings.*, listing_imgs.*');
+        $this->db->from('listings, listing_imgs');
+        $this->db->where('listings.listing_affiliate', 0);
+        $this->db->where('listings.listing_status', 1);
+        $this->db->where('listing_imgs.listing_id = listings.listing_id');
+        $this->db->where('img_size', '115x115');
         $this->db->join('listing_descs', "listing_descs.site_id = $this->site_id AND listing_descs.listing_id = listings.listing_id", "left");
         $this->db->join('listing_titles', "listing_titles.site_id = $this->site_id AND listing_titles.listing_id = listings.listing_id", "left");
         $this->db->order_by('listing_featured, listing_created', 'DESC');
-        $blistings = $this->db->get('listings');
+        $blistings = $this->db->get();
         $blistings_count = $blistings->num_rows();
 
         if(($alistings_count == 0) && ($blistings_count == 0)) {
@@ -153,7 +159,8 @@ class Site_model extends CI_Model
                             'listing_desc' => $this->get_listing_description($listing_row),
                             'listing_tags' => $this->get_listing_tags($listing_row),
                             'listing_expires' => $listing_row['listing_expires'],
-                            'listing_created' => $listing_row['listing_created']
+                            'listing_created' => $listing_row['listing_created'],
+                            'img_url' => $listing_row['img_uri'].'.'.$listing_row['img_ext']
                         );
                     }
                 }
@@ -164,7 +171,7 @@ class Site_model extends CI_Model
 
     public function get_category_listings($category_id)
     {
-        $results = $this->db->query("SELECT * FROM listings, listing_categories WHERE listing_categories.listing_id = listings.listing_id AND category_id = ".$category_id." AND listing_status = 1 ORDER BY listings.listing_featured DESC, listings.listing_affiliate DESC, listings.listing_created ASC");
+        $results = $this->db->query("SELECT * FROM listings, listing_categories, listing_imgs WHERE listing_categories.listing_id = listings.listing_id AND listing_imgs.listing_id = listings.listing_id AND listing_imgs.img_size = '115x115' AND category_id = ".$category_id." AND listing_status = 1 ORDER BY listings.listing_featured DESC, listings.listing_affiliate DESC, listings.listing_created ASC");
         if($results->num_rows() > 0) {
             foreach($results->result_array() as $listing_row) {
                 $listings[] = array(
@@ -175,7 +182,8 @@ class Site_model extends CI_Model
                     'listing_desc' => $this->get_listing_description($listing_row),
                     'listing_tags' => $this->get_listing_tags($listing_row),
                     'listing_expires' => $listing_row['listing_expires'],
-                    'listing_created' => $listing_row['listing_created']
+                    'listing_created' => $listing_row['listing_created'],
+                    'img_url' => $listing_row['img_uri'].'.'.$listing_row['img_ext']
                 );
             }
             return $listings;
@@ -186,7 +194,7 @@ class Site_model extends CI_Model
 
     public function get_sub_category_listings($sub_category_id)
     {
-        $results = $this->db->query("SELECT * FROM listings, listing_categories WHERE listing_categories.listing_id = listings.listing_id AND sub_category_id = ".$sub_category_id." AND listing_status = 1 ORDER BY listings.listing_featured DESC, listings.listing_affiliate DESC, listings.listing_created ASC");
+        $results = $this->db->query("SELECT * FROM listings, listing_categories, listing_imgs WHERE listing_categories.listing_id = listings.listing_id AND listing_imgs.listing_id = listings.listing_id AND listing_imgs.img_size = '115x115' AND sub_category_id = ".$sub_category_id." AND listing_status = 1 ORDER BY listings.listing_featured DESC, listings.listing_affiliate DESC, listings.listing_created ASC");
         if($results->num_rows() > 0) {
             foreach($results->result_array() as $listing_row) {
                 $listings[] = array(
@@ -197,7 +205,8 @@ class Site_model extends CI_Model
                     'listing_desc' => $this->get_listing_description($listing_row),
                     'listing_tags' => $this->get_listing_tags($listing_row),
                     'listing_expires' => $listing_row['listing_expires'],
-                    'listing_created' => $listing_row['listing_created']
+                    'listing_created' => $listing_row['listing_created'],
+                    'img_url' => $listing_row['img_uri'].'.'.$listing_row['img_ext']
                 );
             }
             return $listings;
@@ -208,7 +217,7 @@ class Site_model extends CI_Model
 
     public function get_tag_listings($tag_id)
     {
-        $results = $this->db->query("SELECT * FROM listings, listing_tags WHERE listing_tags.listing_id = listings.listing_id AND tag_id = ".$tag_id." AND listing_status = 1 ORDER BY listings.listing_featured DESC, listings.listing_affiliate DESC, listings.listing_created ASC");
+        $results = $this->db->query("SELECT * FROM listings, listing_tags, listing_imgs WHERE listing_tags.listing_id = listings.listing_id AND listing_imgs.listing_id = listings.listing_id AND listing_imgs.img_size = '115x115' AND tag_id = ".$tag_id." AND listing_status = 1 ORDER BY listings.listing_featured DESC, listings.listing_affiliate DESC, listings.listing_created ASC");
         if($results->num_rows() > 0) {
             foreach($results->result_array() as $listing_row) {
                 $listings[] = array(
@@ -219,7 +228,8 @@ class Site_model extends CI_Model
                     'listing_desc' => $this->get_listing_description($listing_row),
                     'listing_tags' => $this->get_listing_tags($listing_row),
                     'listing_expires' => $listing_row['listing_expires'],
-                    'listing_created' => $listing_row['listing_created']
+                    'listing_created' => $listing_row['listing_created'],
+                    'img_url' => $listing_row['img_uri'].'.'.$listing_row['img_ext']
                 );
             }
             return $listings;

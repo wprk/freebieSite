@@ -216,7 +216,7 @@ class Admin extends CI_Controller {
                 $this->form_validation->set_rules('listing_alt_desc', 'Alternative Listing Description', 'required');
                 $this->form_validation->set_rules('listing_category_id', 'Listing Category', 'required');
                 $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category', 'required');
-                $this->form_validation->set_rules('listing_expires', 'Listing Status', '');
+                $this->form_validation->set_rules('listing_expires', 'Listing Expiry', '');
                 $this->form_validation->set_rules('listing_status', 'Listing Status', 'required');
                 if ($this->form_validation->run()) {
                     $listing_data = array(
@@ -297,9 +297,11 @@ class Admin extends CI_Controller {
                 $this->form_validation->set_rules('category_name', 'Category Name', 'required');
                 $this->form_validation->set_rules('category_desc', 'Category Desc', '');
                 if ($this->form_validation->run()) {
+                    $slug = $this->input->post('category_slug');
+                    $finalSlug = (strlen($slug)>0 ? $slug : $this->admin_model->slugify(set_value('category_name')));
                     $category_data = array(
                         'category_name' => set_value('category_name'),
-                        'category_slug' => $this->admin_model->slugify(set_value('category_slug')),
+                        'category_slug' => $finalSlug,
                         'category_desc' => set_value('category_desc')
                     );
                     $category_id = $this->admin_model->create_category($category_data);
@@ -376,7 +378,7 @@ class Admin extends CI_Controller {
                 $this->form_validation->set_rules('listing_alt_desc','Alternative Listing Description', 'required');
                 $this->form_validation->set_rules('listing_category_id', 'Listing Category', 'required');
                 $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category', 'required');
-                $this->form_validation->set_rules('listing_expires', 'Listing Status', '');
+                $this->form_validation->set_rules('listing_expires', 'Listing Expiry', '');
                 $this->form_validation->set_rules('listing_status', 'Listing Status', 'required');
                 if ($this->form_validation->run()) {
                     $listing_data = array(
@@ -441,9 +443,11 @@ class Admin extends CI_Controller {
                 $this->form_validation->set_rules('category_name', 'Category Name', 'required');
                 $this->form_validation->set_rules('category_desc', 'Category Desc', '');
                 if ($this->form_validation->run()) {
+                    $slug = $this->input->post('category_slug');
+                    $finalSlug = (strlen($slug)>0 ? $slug : $this->admin_model->slugify(set_value('category_name')));
                     $category_data = array(
                         'category_name' => set_value('category_name'),
-                        'category_slug' => $this->admin_model->slugify(set_value('category_slug')),
+                        'category_slug' => $finalSlug,
                         'category_desc' => set_value('category_desc')
                     );
                     $category_id = $this->admin_model->edit_category($this->edit_id, $category_data);
@@ -718,6 +722,52 @@ class Admin extends CI_Controller {
         }
     }
 
+    private function upload_img($size, $listingData)
+    {
+        $config['upload_path'] = './uploads/';
+        $config['allowed_types'] = 'gif|jpg|png';
+        $config['max_width']  = '520';
+        $config['max_height']  = '520';
+
+        $this->load->library('upload', $config);
+
+        switch($size) {
+            case "sml":
+
+            break;
+            case "lrg":
+
+            break;
+        }
+
+        if (!$this->upload->do_upload()) {
+            $error = array('error' => $this->upload->display_errors());
+            $this->load->view('upload_form', $error);
+        } else {
+            $data = array('upload_data' => $this->upload->data());
+            $this->load->view('upload_success', $data);
+        }
+    }
+
+//    public function fix_image_names() {
+//        $listings = $this->admin_model->get_listings();
+//        foreach ($listings as $listing) {
+//            $img_url = $_SERVER['DOCUMENT_ROOT']."/includes/images/listings/".$this->admin_model->slugify($listing['listing_title'])."-sml.png";
+//            echo $img_url.'<br />';
+//            if (file_exists($img_url)) {
+//                echo $listing['listing_id'].'<br />';
+//                $new_url = $_SERVER['DOCUMENT_ROOT']."/includes/images/listings/".$this->admin_model->slugify($listing['listing_title'])."-sml".".png";
+//                rename($img_url, $new_url);
+//                $img_data = array(
+//                    'listing_id' => $listing['listing_id'],
+//                    'img_size' => '115x115',
+//                    'img_ext' => 'png',
+//                    'img_uri' => $this->admin_model->slugify($listing['listing_title'])."-sml",
+//                );
+//                echo $this->admin_model->create_img($img_data);
+//            }
+//        }
+//    }
 }
 
 /* End of file admin.php */

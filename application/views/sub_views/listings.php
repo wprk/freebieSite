@@ -18,7 +18,7 @@
         $listing_count++; ?>
         <div class="listing" itemscope itemtype="http://schema.org/Product">
             <div class="list_img">
-                <img itemprop="image" src="/includes/images/listings/<?php echo $listing['listing_id'];?>.png" width="115" height="115" alt="<?php echo $listing['listing_title'];?>">
+                <img itemprop="image" src="/includes/images/listings/<?php echo $listing['img_url'];?>" width="115" height="115" alt="<?php echo $listing['listing_title'];?>">
             </div>
             <div class="list_title">
                 <a href="<?php echo str_replace('&', '&amp;', $listing['listing_url']); ?>" class="external title" itemprop="url" target="_blank">
