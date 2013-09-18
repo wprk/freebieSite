@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="utf-8"/>
-    <title>Freebiersclub Admin</title>
+    <title>Freebiersclub Beta Admin</title>
 
     <link rel="stylesheet" href="/includes/css/admin.css" type="text/css" media="screen"/>
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.2/themes/smoothness/jquery-ui.css">
