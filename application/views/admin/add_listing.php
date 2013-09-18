@@ -35,6 +35,7 @@
             <textarea class="listing_alt_desc" id="listing_alt_desc" name="listing_alt_desc" rows="4"></textarea>
         </fieldset>
         <fieldset style="width:48%; float:left; margin-right: 3%;">
+
             <label>Category</label>
             <select id="listing_category_id" name="listing_category_id" class="chosen-select" style="width:92%;">
                 <option vakue="">Add Category to Listing</option>
@@ -42,6 +43,7 @@
                     <option value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
                 <?php } ?>
             </select>
+
             <div style="height: 20px;"></div>
             <label>Sub Category</label>
             <select id="listing_sub_category_id" name="listing_sub_category_id" class="chosen-select" style="width:92%;">
@@ -50,6 +52,14 @@
                     <option value="<?php echo $sub_category['sub_category_id']; ?>"><?php echo $sub_category['sub_category_name']; ?></option>
                 <?php } ?>
             </select>
+
+            <div style="height: 20px;"></div>
+            <label>Small Listing Image</label>
+            <input type="file" id="listing_sml_img" name="listing_sml_img" style="width:92%;" />
+
+            <div style="height: 20px;"></div>
+            <label>Large Listing Image</label>
+            <input type="file" id="listing_lrg_img" name="listing_lrg_img" style="width:92%;" />
         </fieldset>
         <fieldset style="width:48%; float:left;">
             <label>Tags</label>
