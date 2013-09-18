@@ -52,7 +52,9 @@
                     <option<?php echo ($listing_record->sub_category_id == $sub_category['sub_category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $sub_category['sub_category_id']; ?>"><?php echo $sub_category['sub_category_name']; ?></option>
                 <?php } ?>
             </select>
+        </fieldset>
 
+        <fieldset style="width:48%; float:left; margin-right: 3%;">
             <div style="height: 20px;"></div>
             <label>Small Listing Image</label>
             <input type="file" id="listing_sml_img" name="listing_sml_img" style="width:92%;" />
