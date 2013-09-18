@@ -35,7 +35,6 @@
             <textarea class="listing_alt_desc" id="listing_alt_desc" name="listing_alt_desc" rows="4"><?php echo $listing_record->listing_alt_desc; ?></textarea>
         </fieldset>
         <fieldset style="width:48%; float:left; margin-right: 3%;">
-
             <label>Category</label>
             <select id="listing_category_id" name="listing_category_id" class="chosen-select" style="width:92%;">
                 <option vakue="">Add Category to Listing</option>
@@ -43,7 +42,6 @@
                     <option<?php echo ($listing_record->category_id == $category['category_id'] ? ' selected="selected"' : '') ?> value="<?php echo $category['category_id']; ?>"><?php echo $category['category_name']; ?></option>
                 <?php } ?>
             </select>
-
             <div style="height: 20px;"></div>
             <label>Sub Category</label>
             <select id="listing_sub_category_id" name="listing_sub_category_id" class="chosen-select" style="width:92%;">
@@ -54,16 +52,7 @@
             </select>
         </fieldset>
 
-        <fieldset style="width:48%; float:left; margin-right: 3%;">
-            <div style="height: 20px;"></div>
-            <label>Small Listing Image</label>
-            <input type="file" id="listing_sml_img" name="listing_sml_img" style="width:92%;" />
-
-            <div style="height: 20px;"></div>
-            <label>Large Listing Image</label>
-            <input type="file" id="listing_lrg_img" name="listing_lrg_img" style="width:92%;" />
-        </fieldset>
-        <fieldset style="width:48%; float:left;">
+        <fieldset style="width:48%; float:right;">
             <label>Tags</label>
             <select id="listing_tags" name="listing_tags[]" class="chosen-select" multiple="" style="width:92%;" data-placeholder="Add Tags to Listing...">
                 <?php foreach ($tags as $tag) { ?>
@@ -72,10 +61,20 @@
             </select>
             <input type="hidden" value="1" name="add_tags">
         </fieldset>
-        <fieldset style="width:48%; float:left;">
+        <fieldset style="width:48%; float:right;">
             <label>Expiry</label>
             <input class="datepicker" id="listing_expires" name="listing_expires" type="text" value="<?php echo ($listing_record->listing_expires != '' ? $listing_record->listing_expires : ''); ?>" style="width:92%;">
         </fieldset>
+
+        <fieldset style="width:48%; float:left;">
+            <label>Small Listing Image</label>
+            <input type="file" id="listing_sml_img" name="listing_sml_img" style="width:92%;" />
+
+            <div style="height: 20px;"></div>
+            <label>Large Listing Image</label>
+            <input type="file" id="listing_lrg_img" name="listing_lrg_img" style="width:92%;" />
+        </fieldset>
+
         <div class="clear"></div>
     </div>
     <footer>
