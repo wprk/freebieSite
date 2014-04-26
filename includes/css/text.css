@@ -1,0 +1,95 @@
+.section_bold {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 160%;
+	font-style: normal;
+	color: #972525;
+	text-decoration: none;
+	font-weight: normal;
+}
+.section_normal {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 140%;
+	font-style: normal;
+	color: #972525;
+	text-decoration: none;
+	font-weight: normal;
+	padding-bottom: 15px;
+	text-transform: lowercase;
+}
+.title_big {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 120%;
+	font-style: normal;
+	color: #972525;
+	text-decoration: none;
+	font-weight: normal;
+	padding-bottom: 15px;
+}
+.title {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 98%;
+	font-style: normal;
+	color: #972525;
+	text-decoration: none;
+	font-weight: normal;
+}
+.expired {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 88%;
+	font-style: normal;
+	color: #3E3936;
+	font-weight: normal;
+	padding-top: 4px;
+	padding-bottom: 5px;
+}
+.expired_blk {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 90%;
+	font-style: normal;
+	color: #000;
+	font-weight: normal;
+}
+.crumbs {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 80%;
+	font-style: normal;
+	color: #666;
+	font-weight: normal;
+	text-decoration: none;
+	padding-bottom: 2px;
+	padding-top: 1px;
+}
+.crumbs a {
+	text-transform:lowercase;
+}
+A:hover {text-decoration: underline;}
+.crumbs_blk {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 80%;
+	font-style: normal;
+	color: #666;
+	font-weight: normal;
+	text-decoration: none;
+	text-transform:lowercase;
+}
+h1.current {
+	font-weight: bold;
+	color: #333;
+	display: inline;
+}
+.crumbs_blk_pad {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 80%;
+	font-style: normal;
+	color: #666;
+	font-weight: normal;
+	text-decoration: none;
+	text-indent: 5px;
+}
+.expired_wht {
+	font-family: "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+	font-size: 90%;
+	font-style: normal;
+	color: #FFF;
+	font-weight: normal;
+}

@@ -1,0 +1,326 @@
+* {
+    font-size: 1em;
+}
+
+body {
+    margin:0;
+    padding:0;
+    height:100%;
+}
+
+.wrap {
+    width: 1000px;
+    padding: 0;
+    margin: 0 auto;
+    clear: both;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+.clear {
+    clear: both;
+}
+
+#header {
+    height: 48px;
+    min-width: 100%;
+    background: #B13E3E url(../images/logobk.png) bottom repeat-x;
+}
+
+#header .right {
+    padding: 0 20px 0 0;
+}
+
+#header img {
+    height: 48px;
+    width: auto;
+    border: 0;
+}
+
+#header_divider {
+    height: 3px;
+    width: 100%;
+    background: #B94747;
+}
+
+#sub_categories {
+    height: 40px;
+    width: 100%;
+    background: url(../images/greybkgtop.gif) bottom repeat-x;
+}
+
+#sub_categories div.right {
+    padding: 0.5em 18px 10px 0;
+}
+
+#sub_categories div.right a {
+    display: inline-block;
+    padding: 0 2px 0 3px;
+}
+
+#content {
+    padding: 20px 0 0 0;
+    clear: both;
+}
+
+#content .left {
+    width: 262px;
+    padding: 0 0 0 10px;
+}
+
+#content .left a {
+    text-transform: lowercase;
+}
+
+#content .left a:hover {
+    text-transform: lowercase;
+}
+
+#content .share_left {
+    float: left;
+    width: 330px;
+    min-height: 255px;
+    padding: 0 0 0 10px;
+    margin: 0 0 20px 0;
+}
+
+#content .share_right {
+    float: right;
+    min-height: 255px;
+    margin: 0 0 20px 0;
+}
+
+#content .left h1 {
+    display: block;
+    padding: 0;
+    margin: 0;
+}
+
+#content .left a {
+    display: block;
+    padding: 0;
+}
+
+#content .left a:hover {
+    text-decoration: underline;
+}
+
+#content .right {
+    width: 728px;
+}
+
+#content .right .listing {
+    width: 728px;
+    height: 115px;
+    margin: 0 0 50px 0;
+}
+
+#content .right .listing .list_img {
+    float: left;
+    height: 115px;
+    width: 115px;
+    margin-right: 15px;
+}
+
+#content .right .listing .list_title {
+    float: right;
+    width: 598px;
+}
+
+#content .right .listing .list_title a.listing_btn {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 75%;
+}
+
+/*#content .right .listing .list_title a.listing_btn:hover {*/
+    /*text-decoration: underline;*/
+/*}*/
+
+#content .right .listing .list_desc {
+    float: right;
+    width: 598px;
+}
+
+#content .right .listing .list_desc a {
+    text-decoration: none;
+}
+
+#content .right .listing .list_desc a:hover {
+    text-decoration: underline;
+}
+
+#content .right .listing .list_share {
+    float: right;
+    width: 598px;
+}
+
+#content .list_share span.share-label {
+    float: left;
+    display: block;
+    margin: 0 10px 0 0;
+    color: #666;
+}
+
+#content .list_share span.share {
+    float: left;
+    display: block;
+    margin: 0 2px 0 0;
+    color: #666;
+}
+
+#content .list_share a:hover span.share-label {
+    text-decoration: underline;
+}
+
+#content .list_share img {
+    float: left;
+    margin: 0 7px 0 3px;
+}
+
+#content .list_share div {
+    float: left;
+}
+
+#content .list_share div.addthis_toolbox {
+    width: 100%;
+}
+
+#content .right .listing .list_expires {
+    float: right;
+    width: 598px;
+}
+
+#content .right .listing .list_tags {
+    float: right;
+    width: 598px;
+    background: url(../images/divider.gif) 0px 0px repeat-x;
+    padding: 3px 0 0 0;
+}
+
+#content .right .listing .list_tags a {
+    color: #666;
+    text-decoration: none;
+}
+
+#content .right .listing .list_tags a:hover {
+    text-decoration: underline;
+}
+
+#content .share_right .share_listing {
+    float: right;
+    width: 660px;
+    height: 115px;
+    margin: 0 0 50px 0;
+}
+
+#content .share_right .share_listing .list_img {
+    float: left;
+    height: 115px;
+    width: 115px;
+    margin-right: 15px;
+}
+
+#content .share_right .share_listing .list_title {
+    float: right;
+    width: 495px;
+    font-size: 120%;
+}
+
+#content .share_right .share_listing .list_desc {
+    float: right;
+    width: 495px;
+    font-size: 105%;
+}
+
+#content .share_right .share_listing .list_share {
+    float: right;
+    width: 495px;
+    font-size: 89%;
+}
+
+#content .share_right .share_listing .list_expires {
+    float: right;
+    width: 495px;
+    font-size: 90%;
+}
+
+#content .share_right .share_listing .list_tags {
+    float: right;
+    width: 495px;
+    background: url(../images/divider.gif) 0px 0px repeat-x;
+    padding: 3px 0 0 0;
+    font-size: 90%;
+}
+
+#content .share_right .share_listing .list_tags a {
+    color: #666;
+    text-decoration: none;
+}
+
+#content .share_right .share_listing .list_tags a:hover {
+    text-decoration: underline;
+}
+
+#content .right .googlead {
+    margin: 0 0 50px 0;
+}
+
+#content .right .backtotop {
+
+}
+
+#footer_divider {
+    margin: 20px 0 0 0;
+    height: 51px;
+    width: 100%;
+    background: url(../images/greybkgbot.gif) top repeat-x;
+}
+
+#footer_content {
+    background: #F2F2F2;
+}
+
+#footer_content #copyright {
+    height: 26px;
+    text-align: right;
+    padding: 4px 0 0 0;
+}
+
+#footer_content #legal {
+    height: 26px;
+    text-align: right;
+    padding: 1px 0 23px 0;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+
+html,
+body {
+    height: 100%;
+    /* The html and body elements cannot have any padding or margin. */
+}
+
+/* Wrapper for page content to push down footer */
+
+#wrap {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    /* Negative indent footer by it's height */
+    margin: 0 auto -103px;
+}
+
+/* Set the fixed height of the footer here */
+
+#push,
+#footer {
+    height: 103px;
+}
