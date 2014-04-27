@@ -150,7 +150,7 @@ class Listings extends CI_Controller
         $this->form_validation->set_rules('listing_alt_desc', 'Alternative Listing Description', 'required');
         $this->form_validation->set_rules('listing_notes', 'Listing Notes', '');
         $this->form_validation->set_rules('listing_category_id', 'Listing Category', 'required');
-        $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category', 'required');
+        $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category');
         $this->form_validation->set_rules('listing_sml_img', 'Listing Image', '');
         $this->form_validation->set_rules('listing_expires', 'Listing Expiry', '');
         $this->form_validation->set_rules('listing_status', 'Listing Status', 'required');
@@ -245,7 +245,7 @@ class Listings extends CI_Controller
         $this->form_validation->set_rules('listing_alt_desc','Alternative Listing Description', 'required');
         $this->form_validation->set_rules('listing_notes','Listing Notes', '');
         $this->form_validation->set_rules('listing_category_id', 'Listing Category', 'required');
-        $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category', 'required');
+        $this->form_validation->set_rules('listing_sub_category_id', 'Listing Sub-Category');
         $this->form_validation->set_rules('listing_sml_img', 'Listing Image', '');
         $this->form_validation->set_rules('listing_expires', 'Listing Expiry', '');
         $this->form_validation->set_rules('listing_status', 'Listing Status', 'required');
