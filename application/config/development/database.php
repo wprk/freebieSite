@@ -48,12 +48,12 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = 'localhost';
-$db['default']['username'] = 'F5h7dfqpEcDr';
-$db['default']['password'] = 'U8*l0Ap3QrsD';
-$db['default']['database'] = 'freebiesites';
+$db['default']['hostname'] = '192.185.171.169';
+$db['default']['username'] = 'staging';
+$db['default']['password'] = 'Y678wan!';
+$db['default']['database'] = 'freebies_staging';
 $db['default']['dbdriver'] = 'mysql';
-$db['default']['dbprefix'] = '';
+$db['default']['dbprefix'] = 'dwd_';
 $db['default']['pconnect'] = FALSE;
 $db['default']['db_debug'] = TRUE;
 $db['default']['cache_on'] = FALSE;
