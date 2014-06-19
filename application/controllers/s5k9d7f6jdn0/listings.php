@@ -266,6 +266,7 @@ class Listings extends CI_Controller
             );
             $listing_id = $this->admin_model->edit_listing($editId, $listing_data);
             if ($listing_id > 0) {
+                die('here');
                 $listing = $this->admin_model->get_listing($listing_id);
                 $imageUri = $this->admin_model->slugify($listing->listing_title);
                 $listing_sml_img_data = array(
