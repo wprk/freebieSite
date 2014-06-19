@@ -4,8 +4,8 @@
     <div id="header">
         <div class="wrap">
             <a name="top"></a>
-            <a href="/"><img class="left" src="/includes/images/logo.png" alt="Freebiers Club Logo" height="48"></a>
-            <a href="/<?= $listing['category_slug']; ?>/"><img class="right" src="/includes/images/categories/<?= $listing['category_id']; ?>.png" alt="Browse By Tag" height="48"></a>
+            <a href="<?= site_url('/'); ?>"><img class="left" src="<?= site_url('/includes/images/logo.png'); ?>" alt="Freebiers Club Logo" height="48"></a>
+            <a href="<?= site_url('/'.$listing['category_slug'].'/'); ?>"><img class="right" src="<?= site_url('/includes/images/categories/'.$listing['category_id'].'.png'); ?>" alt="Browse By Tag" height="48"></a>
         </div>
     </div>
     <div id="header_divider"></div>
@@ -26,15 +26,15 @@
             <div class="share_right">
                 <div class="share_listing" itemscope itemtype="http://schema.org/Product">
                     <div class="list_img">
-                        <a href="<?= $listing['listing_url']; ?>" target="_blank">
-                            <img itemprop="image" class="img-rounded" src="/includes/images/listings/<?php echo $listing['img_url'];?>" width="150" height="150" alt="<?php echo $listing['listing_title'];?>">
+                        <a href="<?= site_url($listing['listing_url']); ?>" target="_blank">
+                            <img itemprop="image" class="img-rounded" src="<?= site_url('/includes/images/listings/'.$listing['img_url']);?>" width="150" height="150" alt="<?php echo $listing['listing_title'];?>">
                         </a>
                     </div>
                     <div class="list_title">
-                        <a href="<?= $listing['listing_url']; ?>" class="external title" target="_blank" itemprop="url">
+                        <a href="<?= site_url($listing['listing_url']); ?>" class="external title" target="_blank" itemprop="url">
                             <span itemprop="name"><?php echo $listing['listing_title'];?></span>
                         </a>
-                        <?php echo (strlen($listing['listing_tracking_img']) > 0 ? '<img src="'.$listing['listing_tracking_img'].'" width="1" height="1" style="float:right;" />' : '') ; ?>
+                        <?php echo (strlen($listing['listing_tracking_img']) > 0 ? '<img src="'.site_url($listing['listing_tracking_img']).'" width="1" height="1" style="float:right;" />' : '') ; ?>
                     </div>
                     <div class="list_desc expired" itemprop="description">
                         <?= $listing['listing_desc']; ?>
@@ -49,7 +49,7 @@
                              pi:pinit:media="<?=$media_link;?>"
                              addthis:description="<?= $listing['listing_desc']; ?>">
                             <span class="share">share:</span>
-                            <a class="addthis_button_facebook"><img src="/includes/images/share_icons/share-fb-logo.png" width="16" height="16"><span class="share-label">facebook</span></a>
+                            <a class="addthis_button_facebook"><img src="<?= site_url('/includes/images/share_icons/share-fb-logo.png'); ?>" width="16" height="16"><span class="share-label">facebook</span></a>
                             <a class="addthis_button_twitter" addthis:title="<?= $listing['listing_title']; ?> - <?= $media_link; ?>"><img src="/includes/images/share_icons/share-tw-logo.png" width="16" height="16"><span class="share-label">twitter</span></a>
                             <a class="addthis_button_google_plusone_share" addthis:title="<?= $listing['listing_title']; ?>" ><img src="/includes/images/share_icons/share-gp-logo.png" width="16" height="16"><span class="share-label">google+</span></a>
                             <a target="_blank" href="http://www.pinterest.com/pin/create/button/?url=http://<?= $site['site_url']; ?>/<?= $listing['listing_uri']; ?>&media=<?=$media_link;?>&description=<?= urlencode($listing['listing_title']); ?>%20-%20<?= urlencode($listing['listing_desc']); ?>" data-pin-do="buttonPin" data-pin-config="above">
