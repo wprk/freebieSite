@@ -645,13 +645,13 @@ class Admin_model extends CI_Model
         $this->load->library('upload', $config);
 
         if ($this->upload->do_upload($field)) {
-            if($this->check_for_image($images, $imgData['img_size'])) {
+            //if($this->check_for_image($images, $imgData['img_size'])) {
                 if($this->db->insert("listing_imgs", $imgData)) {
                     return true;
                 }
-            } else {
-                return $this->update_img($imgData['listing_id'], $field, $imgData);
-            }
+            //} else {
+            //    return $this->update_img($imgData['listing_id'], $field, $imgData);
+            //}
         } else {
             return false;
         }
