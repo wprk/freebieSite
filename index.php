@@ -22,10 +22,10 @@ date_default_timezone_set('Europe/London');
  */
 if ($_SERVER['SERVER_NAME']=='www.freestuffclub.co.uk')
    define('ENVIRONMENT', 'production');
-else if ($_SERVER['SERVER_NAME']=='staging.freestuffclub.co.uk')
-   define('ENVIRONMENT', 'testing');
+else if ($_SERVER['SERVER_NAME']=='test.freestuffclub.co.uk')
+   define('ENVIRONMENT', 'staging');
 else
-   define('ENVIRONMENT', 'development');
+   define('ENVIRONMENT', 'local');
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
