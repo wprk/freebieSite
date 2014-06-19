@@ -642,8 +642,6 @@ class Admin_model extends CI_Model
         $config['max_height']  = '520';
         $config['file_name'] = $imgData['img_uri'].'.'.$imgData['img_ext'];
 
-        die(print_r($config));
-
         $this->load->library('upload', $config);
 
         if ($this->upload->do_upload($field)) {
