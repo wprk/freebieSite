@@ -27,7 +27,6 @@ else if ($_SERVER['SERVER_NAME']=='test.freestuffclub.co.uk')
 else
    define('ENVIRONMENT', 'local');
 
-die(ENVIRONMENT);
 /*
  *---------------------------------------------------------------
  * ERROR REPORTING
