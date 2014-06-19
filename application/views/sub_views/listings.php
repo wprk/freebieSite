@@ -18,7 +18,7 @@
         $listing_count++; ?>
         <div class="listing" itemscope itemtype="http://schema.org/Product">
             <div class="list_img">
-                <a href="<?= site_url($listing['listing_url']); ?>" target="_blank">
+                <a href="<?= $listing['listing_url']; ?>" target="_blank">
                     <img itemprop="image" class="img-rounded" src="<?= site_url('/includes/images/listings/'.$listing['img_url']); ?>" width="115" height="115" alt="<?php echo $listing['listing_title'];?>">
                 </a>
             </div>
@@ -27,7 +27,7 @@
                     <span itemprop="name"><?php echo $listing['listing_title'];?></span>
                 </a>
                 <?php echo (strlen($listing['listing_tracking_img']) > 0 ? '<img src="'.site_url($listing['listing_tracking_img']).'" width="1" height="1" style="float:right;" />' : '') ; ?>
-                <a href="<?= site_url($listing['listing_url']); ?>" target="_blank" class="btn listing_btn btn-danger btn-xs pull-right crumbs">get freebie</a>
+                <a href="<?= $listing['listing_url']; ?>" target="_blank" class="btn listing_btn btn-danger btn-xs pull-right crumbs">get freebie</a>
             </div>
             <div class="list_desc expired" itemprop="description">
                 <?= mb_strimwidth($listing['listing_desc'], 0, 230, '<a href="'.site_url('/'.$listing['category_slug'].'/'.$listing['listing_uri']).'">...</a>'); ?>
@@ -42,11 +42,11 @@
                      pi:pinit:media="<?=$media_link;?>"
                      addthis:description="<?= $listing['listing_desc']; ?>">
                     <span class="share">share:</span>
-                    <a class="addthis_button_facebook"><img src="/includes/images/share_icons/share-fb-logo.png" width="16" height="16"><span class="share-label">facebook</span></a>
-                    <a class="addthis_button_twitter" addthis:title="<?= $listing['listing_title']; ?>"><img src="/includes/images/share_icons/share-tw-logo.png" width="16" height="16"><span class="share-label">twitter</span></a>
-                    <a class="addthis_button_google_plusone_share"><img src="/includes/images/share_icons/share-gp-logo.png" width="16" height="16"><span class="share-label">google+</span></a>
+                    <a class="addthis_button_facebook"><img src="<?= site_url('/includes/images/share_icons/share-fb-logo.png'); ?>" width="16" height="16"><span class="share-label">facebook</span></a>
+                    <a class="addthis_button_twitter" addthis:title="<?= $listing['listing_title']; ?>"><img src="<?= site_url('/includes/images/share_icons/share-tw-logo.png'); ?>" width="16" height="16"><span class="share-label">twitter</span></a>
+                    <a class="addthis_button_google_plusone_share"><img src="<?= site_url('/includes/images/share_icons/share-gp-logo.png'); ?>" width="16" height="16"><span class="share-label">google+</span></a>
                     <a target="_blank" href="http://www.pinterest.com/pin/create/button/?url=http://<?= $site['site_url']; ?>/<?= $listing['listing_uri']; ?>&media=<?=$media_link;?>&description=<?= urlencode($listing['listing_title']); ?>%20-%20<?= urlencode($listing['listing_desc']); ?>" data-pin-do="buttonPin" data-pin-config="above">
-                       <img src="/includes/images/share_icons/share-pn-logo.png" width="16" height="16"><span class="share-label">pinterest</span>
+                       <img src="<?= site_url('/includes/images/share_icons/share-pn-logo.png'); ?>" width="16" height="16"><span class="share-label">pinterest</span>
                     </a>
                     <div style="float: right">
                         <a class="addthis_button_email"></a>
@@ -75,7 +75,7 @@
             </div>
             <div class="list_tags crumbs">
                 tags:
-                <?php $count = 0; foreach ($listing['listing_tags'] as $tag) { $count++; ?><?php echo ($count == '1' ? '' : ', '); ?><a href="/<?php echo $tag['tag_slug']; ?>/"><?php echo $tag['tag_name']; ?></a><?php } ?>
+                <?php $count = 0; foreach ($listing['listing_tags'] as $tag) { $count++; ?><?php echo ($count == '1' ? '' : ', '); ?><a href="<?= site_url('/'.$tag['tag_slug'].'/'); ?>"><?php echo $tag['tag_name']; ?></a><?php } ?>
                 <?php if (empty($listing['listing_tags'])) echo 'None'; ?>
             </div>
         </div>

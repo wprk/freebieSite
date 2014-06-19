@@ -9,7 +9,7 @@
                                 <?php echo $subcat['sub_category_name'];?>
                             </h1>
                         <?php } else { ?>
-                            <a class="crumbs_blk" href="/<?php echo $category['category_slug'];?>/<?php echo $subcat['sub_category_slug'];?>/">
+                            <a class="crumbs_blk" href="<?= site_url('/'.$category['category_slug'].'/'.$subcat['sub_category_slug'].'/'); ?>">
                                 <?php echo $subcat['sub_category_name'];?>
                             </a>
                         <?php } ?>
@@ -20,7 +20,7 @@
                 <?php } ?>
                 <?php if (isset($more_tags)) { ?>
                     <?php foreach($more_tags as $xtag) { ?>
-                        <a class="crumbs_blk" href="/<?php echo $xtag['tag_slug'];?>/">
+                        <a class="crumbs_blk" href="<?= site_url('/'.$xtag['tag_slug'].'/'); ?>">
                             <?php echo $xtag['tag_name'];?>
                         </a>
                         |
@@ -38,7 +38,7 @@
                                 <?php echo $page['page_name'];?>
                             </h1>
                         <?php } else { ?>
-                            <a class="crumbs_blk" href="/<?php echo $page['page_slug'];?>/">
+                            <a class="crumbs_blk" href="<?= site_url('/'.$page['page_slug'].'/'); ?>">
                                 <?php echo $page['page_name'];?>
                             </a>
                         <?php } ?>
@@ -49,7 +49,7 @@
                 <?php } ?>
                 <?php if ( !isset($more_tags) && isset($sub_categories) && count($sub_categories) < 1 ) { ?>
                     <?php for($i == 1; $i < count($landing_pages); $i++) { ?>
-                        <a class="crumbs_blk" href="/<?php echo $landing_pages[$i]['page_slug'];?>/">
+                        <a class="crumbs_blk" href="<?= site_url('/'.$landing_pages[$i]['page_slug'].'/'); ?>">
                             <?php echo $landing_pages[$i]['page_name'];?>
                         </a>
                         <?php if($i < (count($landing_pages)-1)) { ?>
