@@ -646,6 +646,7 @@ class Admin_model extends CI_Model
 
         if ($this->upload->do_upload($field)) {
             //if($this->check_for_image($images, $imgData['img_size'])) {
+            die(print_r($imgData));
                 if($this->db->insert("listing_imgs", $imgData)) {
                     return true;
                 }
