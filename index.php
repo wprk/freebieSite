@@ -20,6 +20,8 @@ date_default_timezone_set('Europe/London');
  * NOTE: If you change these, also change the error_reporting() code below
  *
  */
+die($_SERVER['SERVER_NAME']);
+
 if ($_SERVER['SERVER_NAME']=='freestuffclub.co.uk')
    define('ENVIRONMENT', 'production');
 else if ($_SERVER['SERVER_NAME']=='test.freestuffclub.co.uk')
