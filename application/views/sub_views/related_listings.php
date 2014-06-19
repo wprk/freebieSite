@@ -3,26 +3,26 @@
     $listing_count++; ?>
     <div class="listing" itemscope itemtype="http://schema.org/Product">
         <div class="list_img">
-            <a href="<?= $listing['listing_url']; ?>" target="_blank">
-                <img itemprop="image" class="img-rounded" src="/includes/images/listings/<?php echo $listing['img_url'];?>" width="115" height="115" alt="<?php echo $listing['listing_title'];?>">
+            <a href="<?= site_url($listing['listing_url']); ?>" target="_blank">
+                <img itemprop="image" class="img-rounded" src="<?= site_url('/includes/images/listings/'.$listing['img_url']); ?>" width="115" height="115" alt="<?php echo $listing['listing_title'];?>">
             </a>
         </div>
         <div class="list_title">
-            <a href="/<?= $listing['category_slug'] . '/' . $listing['listing_uri']; ?>" class="external title" itemprop="url">
+            <a href="<?= site_url('/'.$listing['category_slug'].'/'.$listing['listing_uri']); ?>" class="external title" itemprop="url">
                 <span itemprop="name"><?php echo $listing['listing_title'];?></span>
             </a>
-            <?php echo (strlen($listing['listing_tracking_img']) > 0 ? '<img src="'.$listing['listing_tracking_img'].'" width="1" height="1" style="float:right;" />' : '') ; ?>
-            <a href="<?= $listing['listing_url']; ?>" target="_blank" class="btn listing_btn btn-danger btn-xs pull-right crumbs">get freebie</a>
+            <?php echo (strlen($listing['listing_tracking_img']) > 0 ? '<img src="'.site_url($listing['listing_tracking_img']).'" width="1" height="1" style="float:right;" />' : '') ; ?>
+            <a href="<?= site_url($listing['listing_url']); ?>" target="_blank" class="btn listing_btn btn-danger btn-xs pull-right crumbs">get freebie</a>
         </div>
         <div class="list_desc expired" itemprop="description">
-            <?= mb_strimwidth($listing['listing_desc'], 0, 230, '<a href="/'.$listing['category_slug'] . '/' . $listing['listing_uri'].'">...</a>'); ?>
+            <?= mb_strimwidth($listing['listing_desc'], 0, 230, '<a href="'.site_url('/'.$listing['category_slug'].'/'.$listing['listing_uri']).'">...</a>'); ?>
         </div>
         <div class="list_share crumbs">
             <!-- AddThis Button BEGIN -->
             <?php $server_img_path = realpath(BASEPATH . '../includes/images/listings/'.$listing['listing_uri'].'-lrg.png'); ?>
-            <?php $media_link = 'http://'.$site['site_url'].(file_exists($server_img_path) ? '/includes/images/listings/'.$listing['listing_uri'].'-lrg.png' : '/includes/images/listings/'.$listing['img_url']); ?>
+            <?php $media_link = site_url().(file_exists($server_img_path) ? '/includes/images/listings/'.$listing['listing_uri'].'-lrg.png' : '/includes/images/listings/'.$listing['img_url']); ?>
             <div class="addthis_toolbox addthis_default_style"
-                 addthis:url="http://<?= $site['site_url']; ?>/<?= $listing['listing_uri']; ?>"
+                 addthis:url="<?= site_url(); ?>/<?= $listing['listing_uri']; ?>"
                  addthis:title="<?= $listing['listing_title']; ?>"
                  pi:pinit:media="<?=$media_link;?>"
                  addthis:description="<?= $listing['listing_desc']; ?>">
