@@ -635,7 +635,7 @@ class Admin_model extends CI_Model
     {
         $images = $this->get_imgs_by_listing($imgData['listing_id']);
 
-        $config['upload_path'] = realpath(BASEPATH . '/../includes/images/listings/');
+        $config['upload_path'] = realpath(FCPATG . '/includes/images/listings/');
         $config['allowed_types'] = '*';
         $config['overwrite'] = true;
         $config['max_width']  = '520';
