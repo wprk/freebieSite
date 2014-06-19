@@ -3,10 +3,10 @@
 $active_group = 'default';
 $active_record = TRUE;
 
-$db['default']['hostname'] = '192.185.171.169';
-$db['default']['username'] = 'freewins_nath';
-$db['default']['password'] = 'nathpark09';
-$db['default']['database'] = 'freewins_kev';
+$db['default']['hostname'] = 'localhost';
+$db['default']['username'] = 'F5h7dfqpEcDr';
+$db['default']['password'] = 'U8*l0Ap3QrsD';
+$db['default']['database'] = 'freebiesites_test';
 $db['default']['dbdriver'] = 'mysql';
 $db['default']['dbprefix'] = '';
 $db['default']['pconnect'] = FALSE;
